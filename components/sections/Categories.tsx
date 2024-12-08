@@ -1,5 +1,8 @@
 import { inter } from "@/app/fonts";
 import React from "react";
+import product4 from "../../Public/product4.png";
+import category from "../../Public/category.png";
+import category1 from "../../Public/category1.png";
 
 const Categories = () => {
   return (
@@ -7,7 +10,7 @@ const Categories = () => {
       <h2 className="heading text-center xl:text-left xl:px-20">Top categories</h2>
       <div className="flex flex-wrap xl:flex-nowrap justify-center items-center gap-5">
         <div
-          className="relative bg-slate-200 rounded-[10px] bg-[url('/product4.png')] h-[350px] w-[350px] bg-cover bg-center"
+          className={`relative bg-slate-200 rounded-[10px] bg-[url(${product4})] h-[350px] w-[350px] bg-cover bg-center`}
           style={{
             backgroundSize: "100% 140%",
             backgroundPosition: "right bottom",
@@ -20,7 +23,7 @@ const Categories = () => {
         </div>
 
         <div
-          className="relative bg-slate-200 rounded-[10px] bg-[url('/category.png')] h-[350px] w-[350px] bg-cover bg-center"
+          className={`relative bg-slate-200 rounded-[10px] bg-[url(${category})] h-[350px] w-[350px] bg-cover bg-center`}
           style={{
             backgroundSize: "130% 150%",
             backgroundPosition: "right bottom",
@@ -33,7 +36,7 @@ const Categories = () => {
         </div>
 
         <div
-          className="relative bg-slate-200 rounded-[10px] bg-[url('/category1.png')] h-[350px] w-[350px] bg-cover bg-center"
+          className={`relative bg-slate-200 rounded-[10px] bg-[url(${category1})] h-[350px] w-[350px] bg-cover bg-center`}
           style={{
             backgroundSize: "160% 110%",
             backgroundPosition: "right bottom",
