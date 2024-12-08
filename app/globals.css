@@ -2,26 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Reset Styles */
+@layer base {
+  /* Remove default margin and padding */
+  html,
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  figure,
+  blockquote,
+  dl,
+  dd {
+    margin: 0;
+    padding: 0;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Set body to take full height and ensure no overflow */
+  html,
+  body {
+    height: 100%;
+    color: #272343;
+  }
+
+  /* Remove list styles on ul and ol with a class of list-none */
+  ul,
+  ol {
+    list-style: none;
+  }
+
+  /* Remove images' border */
+  img,
+  picture {
+    max-width: 100%;
+    display: block;
+  }
+
+  /* Reset forms and buttons */
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+    color: inherit;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
+/* Utility Overrides */
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .container {
+    @apply max-w-screen-xl mx-auto px-4 sm:px-16 lg:px-36;
+  }
+
+  .card {
+    @apply shadow-lg rounded-lg overflow-hidden bg-white;
+  }
+  .heading {
+    @apply text-[32px] font-semibold  mb-10 text-accent;
   }
 }
