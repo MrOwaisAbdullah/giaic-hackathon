@@ -1,9 +1,9 @@
 import { inter } from "@/app/fonts";
 import Image from "next/image";
 import React from "react";
-import product4 from "../../public/product4.png"
-import category from "../../public/category.png"
-import category1 from "../../public/category1.png"
+import product4 from "../../Public/product4.png"
+import category from "../../Public/category.png"
+import category1 from "../../Public/category1.png"
 
 const Categories = () => {
   return (

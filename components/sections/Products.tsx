@@ -1,13 +1,13 @@
 import React from 'react'
 import ProductCard from '../ui/ProductCard'
 import { inter } from '@/app/fonts'
-import product1 from "../../public/product1.png"
-import product2 from "../../public/product2.png"
-import product3 from "../../public/product3.png"
-import product4 from "../../public/product4.png"
-import product5 from "../../public/product5.png"
-import product6 from "../../public/product6.png"
-import product7 from "../../public/product7.png"
+import product1 from "../../Public/product1.png"
+import product2 from "../../Public/product2.png"
+import product3 from "../../Public/product3.png"
+import product4 from "../../Public/product4.png"
+import product5 from "../../Public/product5.png"
+import product6 from "../../Public/product6.png"
+import product7 from "../../Public/product7.png"
 
 const Products = () => {
   return (
