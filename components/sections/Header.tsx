@@ -67,15 +67,51 @@ const Header = () => {
             </button>
             <DrawerContent className="bg-background mx-auto max-w-[80%] text-left px-6 lg:max-w-[35%] md:max-w-[50%]">
               <DrawerClose
-                className="m-5 text-xl place-self-end"
-                onClick={closeDrawer}
+                className="m-5 text-xl place-self-end" onClick={closeDrawer}
               >
                 <CgCloseO />
               </DrawerClose>
               <DrawerTitle className="text-xl my-5 font-bold">
                 Main Menu
               </DrawerTitle>
+              <div className="flex flex-col gap-5 text-2xl">
+            <Link
+              href="/"
+              className="mr-9 text-sm  text-[#636270] active:text-primary hover:text-primary"
+              onClick={closeDrawer}
+            >
+              Home
+            </Link>
+            <Link
+              href="/products"
+              className="mr-9 text-sm text-[#636270] active:text-primary hover:text-primary"
+              onClick={closeDrawer}
+            >
+              Shop
+            </Link>
+            <Link
+              href="/singleproduct"
+              className="mr-9 text-sm text-[#636270] active:text-primary hover:text-primary"
+              onClick={closeDrawer}
+            >
+              Product
+            </Link>
+            <Link
+              href="/contact"
+              className="mr-9 text-sm text-[#636270] active:text-primary hover:text-primary"
+              onClick={closeDrawer}
+            >
+              Contact
+            </Link>
 
+            <Link
+              href="/"
+              className="mr-9 text-sm text-[#636270] active:text-primary hover:text-primary"
+              onClick={closeDrawer}
+            >
+              About
+            </Link>
+          </div>
             </DrawerContent>
           </Drawer>
         </div>
@@ -87,6 +123,7 @@ const Header = () => {
             <Link
               href="/"
               className="mr-9 text-sm  text-[#636270] active:text-primary hover:text-primary"
+              
             >
               Home
             </Link>

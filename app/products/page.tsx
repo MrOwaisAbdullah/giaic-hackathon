@@ -8,7 +8,7 @@ const Products = () => {
       <h2 className="heading xl:px-28 text-center">Our Products</h2>
       <div className="flex flex-wrap justify-center items-center gap-5">
         <ProductCard
-          image="public/product1.png"
+          image="/product1.png"
           newPrice={20}
           name="Library Stool Chair"
           isNew={true}
