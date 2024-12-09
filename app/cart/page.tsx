@@ -9,7 +9,7 @@ import { inter } from "../fonts";
 const Cart = () => {
   return (
     <div
-      className={`${inter.className} flex flex-wrap xl:flex-nowrap gap-16 container my-20 max-w-7xl m-auto`}
+      className={`${inter.className} overflow-hidden flex flex-wrap xl:flex-nowrap gap-16 container my-20 max-w-7xl m-auto`}
     >
       {/* Cart Products */}
       <div className="flex flex-col xl:w-[65%] w-full ">
@@ -20,7 +20,7 @@ const Cart = () => {
               <Image className="w-32 h-32 " src={product1} alt="Product" />
               <div className="gap-2 flex flex-col">
                 <div className="flex justify-between items-center">
-                  <h2 className="text-accent mr-40 xl:mr-60">
+                  <h2 className="text-accent mr-14 md:mr-96 xl:mr-60">
                     Library Stool Chair
                   </h2>
                   <div className="text-[15px]">MRP:$99</div>
@@ -47,7 +47,7 @@ const Cart = () => {
               <Image className="w-32 h-32 " src={product2} alt="Product" />
               <div className="gap-2 flex flex-col">
                 <div className="flex justify-between items-center">
-                  <h2 className="text-accent mr-40 xl:mr-60">
+                  <h2 className="text-accent mr-14 md:mr-96 xl:mr-60">
                     Library Stool Chair
                   </h2>
                   <div className="text-[15px]">MRP:$99</div>

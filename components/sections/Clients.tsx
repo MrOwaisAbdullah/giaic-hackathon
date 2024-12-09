@@ -12,7 +12,7 @@ const Clients = () => {
   return (
     <section className="text-gray-600 m-auto flex flex-col justify-center items-center">
   <div className="xl:container pt-24">
-    <div className="flex flex-wrap ml-6 xl:ml-0 xl:flex-nowrap xl:-mx-4 text-center gap-20 items-center">
+    <div className="flex flex-wrap m-auto px-8 xl:px-0 justify-center  xl:flex-nowrap text-center gap-20 items-center">
       <div className="max-w-20">
         <Image src={client1} alt='Clients'/>
       </div>

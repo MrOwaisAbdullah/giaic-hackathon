@@ -16,7 +16,7 @@ const page = () => {
         {/* Product Image */}
         <div className="xl:w-3/4">
           <Image
-            className="rounded-xl w-[800px] h-[500px]"
+            className="rounded-xl xl:w-[800px] xl:h-[500px]"
             src={product}
             alt="Product"
           ></Image>
@@ -50,7 +50,7 @@ const page = () => {
       {/* Related Products */}
       <div className="flex flex-wrap xl:flex-nowrap justify-center mt-14 m-auto items-center xl:container gap-5">
         <div>
-          <div className="group relative rounded w-52 h-52 bg-slate-200 overflow-hidden">
+          <div className="group relative rounded xs:h-[350px] xs:w-[350px] sm:w-96 sm:h-96 xl:w-52 xl:h-52 bg-slate-200 overflow-hidden">
             <Image src={category} alt="product" />
           </div>
           <div className="flex mt-3 justify-between items-center">
@@ -59,7 +59,7 @@ const page = () => {
           </div>
         </div>
         <div>
-          <div className="group relative rounded w-52 h-52 bg-slate-200 overflow-hidden">
+          <div className="group relative rounded xs:h-[350px] xs:w-[350px] sm:w-96 sm:h-96 xl:w-52 xl:h-52 bg-slate-200 overflow-hidden">
             <Image src={product1} alt="product" />
           </div>
           <div className="flex mt-3 justify-between items-center">
@@ -69,7 +69,7 @@ const page = () => {
         </div>
 
         <div>
-          <div className="group relative rounded w-52 h-52 bg-slate-200 overflow-hidden">
+          <div className="group relative rounded xs:h-[350px] xs:w-[350px] sm:w-96 sm:h-96 xl:w-52 xl:h-52 bg-slate-200 overflow-hidden">
             <Image src={product2} alt="product" />
           </div>
           <div className="flex mt-3 justify-between items-center">
@@ -79,7 +79,7 @@ const page = () => {
         </div>
 
         <div>
-          <div className="group relative rounded w-52 h-52 bg-slate-200 overflow-hidden">
+          <div className="group relative rounded xs:h-[350px] xs:w-[350px] sm:w-96 sm:h-96 xl:w-52 xl:h-52 bg-slate-200 overflow-hidden">
             <Image src={product3} alt="product" />
           </div>
           <div className="flex mt-3 justify-between items-center">
@@ -89,7 +89,7 @@ const page = () => {
         </div>
 
         <div>
-          <div className="group relative rounded w-52 h-52 bg-slate-200 overflow-hidden">
+          <div className="group relative rounded xs:h-[350px] xs:w-[350px] sm:w-96 sm:h-96 xl:w-52 xl:h-52 bg-slate-200 overflow-hidden">
             <Image src={product6} alt="product" />
           </div>
           <div className="flex mt-3 justify-between items-center">
