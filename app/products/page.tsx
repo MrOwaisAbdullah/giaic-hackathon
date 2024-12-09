@@ -2,8 +2,11 @@ import React from "react";
 import { inter, roboto } from "../fonts";
 import Image from "next/image";
 import ProductCard from "@/components/ui/ProductCard";
+import product1 from "../../public/product1.png"
 import product2 from "../../public/product2.png"
 import product3 from "../../public/product3.png"
+import product4 from "../../public/product4.png"
+import product5 from "../../public/product5.png"
 import product6 from "../../public/product6.png"
 import product7 from "../../public/product7.png"
 import category from "../../public/category.png"
@@ -15,69 +18,69 @@ const Products = () => {
       <h2 className="heading xl:px-28 text-center">Our Products</h2>
       <div className="flex flex-wrap justify-center px-6 items-center gap-5">
         <ProductCard
-          pImage="/product1.png"
+          pImage={product1}
           newPrice={20}
           name="Library Stool Chair"
           isNew={true}
         />
         <ProductCard
-          pImage="/product7.png"
+          pImage={product7}
           newPrice={20}
           name="Library Stool Chair"
           isDiscount={true}
         />
         <ProductCard
-          pImage="/product6.png"
+          pImage={product6}
           newPrice={20}
           name="Library Stool Chair"
         />
         <ProductCard
-          pImage="/product5.png"
+          pImage={product5}
           newPrice={20}
           name="Library Stool Chair"
         />
         <ProductCard
-          pImage="/category.png"
+          pImage={category}
           newPrice={20}
           name="Library Stool Chair"
           isNew={true}
         />
         <ProductCard
-          pImage="/product3.png"
+          pImage={product3}
           newPrice={20}
           name="Library Stool Chair"
           isDiscount={true}
         />
         <ProductCard
-          pImage="/product2.png"
+          pImage={product2}
           newPrice={20}
           name="Library Stool Chair"
         />
         <ProductCard
-          pImage="/product1.png"
+          pImage={product1}
           newPrice={20}
           name="Library Stool Chair"
         />
 
 <ProductCard
-          pImage="/product4.png"
+          pImage={product4}
           newPrice={20}
           name="Library Stool Chair"
           isNew={true}
         />
         <ProductCard
-          pImage="/product7.png"
+          pImage={product7}
           newPrice={20}
           name="Library Stool Chair"
           isDiscount={true}
         />
         <ProductCard
-          pImage="/product6.png"
+          pImage={product6}
           newPrice={20}
           name="Library Stool Chair"
         />
         <ProductCard
-          pImage="/product5.png"
+          pImage={product5}
           newPrice={20}
           name="Library Stool Chair"
         />

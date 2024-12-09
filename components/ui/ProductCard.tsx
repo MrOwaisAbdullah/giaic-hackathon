@@ -1,15 +1,14 @@
 import React from "react";
 import { inter } from "../../app/fonts";
 import { PiShoppingCart } from "react-icons/pi";
-import Image from "next/image";
-// import product from "../../public/product1.png"
+import Image, { StaticImageData } from "next/image";
 
 interface ProductCards {
   name: string;
   oldPrice?: number;
   newPrice: number;
   isDiscount?: boolean;
-  pImage: string;
+  pImage: StaticImageData;
   isNew?: boolean;
 }
 
