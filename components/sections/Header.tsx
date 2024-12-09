@@ -36,7 +36,7 @@ const Header = () => {
           Eng
           <IoIosArrowDown />
         </p>
-        <Link href={'/faq'} ><p>Faqs</p></Link>
+        <p>Faqs</p>
         <span className="flex items-center gap-1"><CiCircleAlert className="text-[#918F9F] text-sm"/><p>Need Help</p></span>
         </div>
       </div>
@@ -53,12 +53,11 @@ const Header = () => {
             <Image src={logo} alt=""></Image>
             Comforty
           </Link>
-          <Link href={"/cart"}>
             <div className="bg-white py-3 px-5 rounded-xl gap-3 hidden sm:flex items-center">
             <PiShoppingCart  className="text-2xl flex" />
             <p>Cart</p>
             <div className="rounded-full w-5 h-5 flex justify-center items-center text-white bg-primary">2</div>
-          </div></Link>
+          </div>
 
 
           <Drawer direction="left" open={isOpen} onOpenChange={setIsOpen}>

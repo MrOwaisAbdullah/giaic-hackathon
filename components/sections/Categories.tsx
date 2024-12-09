@@ -4,7 +4,7 @@ import React from "react";
 const Categories = () => {
   return (
     <section className={`${inter.className} px-5 pt-16`}>
-      <h2 className="heading text-center xl:text-left xl:px-20">Top categories</h2>
+      <h2 className="heading text-center xl:text-left xl:px-28">Top categories</h2>
       <div className="flex flex-wrap xl:flex-nowrap justify-center items-center gap-5">
         <div
           className="relative bg-slate-200 rounded-[10px] bg-[url('/product4.png')] h-[350px] w-[350px] bg-cover bg-center"
