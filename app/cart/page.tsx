@@ -9,7 +9,7 @@ import { inter } from "../fonts";
 const Cart = () => {
   return (
     <div
-      className={`${inter.className} flex flex-wrap xl:flex-nowrap gap-16 container my-20`}
+      className={`${inter.className} flex flex-wrap xl:flex-nowrap gap-16 container my-20 max-w-7xl m-auto`}
     >
       {/* Cart Products */}
       <div className="flex flex-col xl:w-[65%] w-full ">
