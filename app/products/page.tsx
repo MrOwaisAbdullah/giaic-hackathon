@@ -6,9 +6,9 @@ const Products = () => {
   return (
     <div className={`${inter.className} max-w-7xl m-auto pt-16 -mb-28`}>
       <h2 className="heading xl:px-28 text-center">Our Products</h2>
-      <div className="xl:container flex flex-wrap xl:flex-nowrap justify-center items-center gap-5">
+      <div className="flex flex-wrap justify-center items-center gap-5">
         <ProductCard
-          image="/product1.png"
+          image="public/product1.png"
           newPrice={20}
           name="Library Stool Chair"
           isNew={true}
@@ -29,8 +29,6 @@ const Products = () => {
           newPrice={20}
           name="Library Stool Chair"
         />
-      </div>
-      <div className="xl:container flex flex-wrap xl:flex-nowrap  justify-center items-center mt-10 gap-5">
         <ProductCard
           image="/category.png"
           newPrice={20}
@@ -53,10 +51,8 @@ const Products = () => {
           newPrice={20}
           name="Library Stool Chair"
         />
-      </div>
 
-      <div className="xl:container flex flex-wrap xl:flex-nowrap justify-center items-center mt-10 gap-5">
-        <ProductCard
+<ProductCard
           image="/product4.png"
           newPrice={20}
           name="Library Stool Chair"
@@ -78,7 +74,10 @@ const Products = () => {
           newPrice={20}
           name="Library Stool Chair"
         />
+
+
       </div>
+
 
       <div className="bg-secondary flex flex-col justify-center items-center py-20 mt-28">
         <h3 className={`${roboto.className} font-medium text-2xl xl:text-4xl text-center pb-16`}>Or Subscribe To The Newsletter</h3>
