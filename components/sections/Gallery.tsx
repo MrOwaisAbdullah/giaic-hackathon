@@ -10,17 +10,19 @@ import Image from 'next/image'
 const Gallery = () => {
   return (
     <section className='hidden lg:flex flex-wrap lg:flex-nowrap m-auto px-36 mt-20 w-full'>
+      {/* vertical Text */}
               <div
         className={`${roboto.className} hidden lg:block text-lg  xl:text-[26px] text-center text-black rotate-180`}
         style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
       >
         EXPLORE NEW AND POPULAR STYLES
       </div>
+      {/* Large Image */}
                 <div
           className="group m-0 relative w-full xl:w-[59%] h-auto mr-5 bg-slate-200 overflow-hidden">
             <Image src={product6} alt='Product'></Image>
         </div>
-
+      {/* four small images */}
         <div className='flex gap-5 flex-wrap w-full items-center xl:w-3/5 jutify-center xl:justify-end'>
         <div
           className="group relative justify-center items-center w-48 h-48 xl:w-56 xl:h-56 bg-slate-200 bg-[url('/product1.png')] bg-cover bg-center overflow-hidden">

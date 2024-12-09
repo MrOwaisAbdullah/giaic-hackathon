@@ -3,16 +3,17 @@ import React from "react";
 import product from "../../Public/product7.png";
 import { inter } from "../fonts";
 import { PiShoppingCart } from "react-icons/pi";
-import product1 from "../../Public/product1.png"
-import product2 from "../../Public/product2.png"
-import product3 from "../../Public/product3.png"
-import product6 from "../../Public/product6.png"
-import category from "../../Public/category.png"
+import product1 from "../../Public/product1.png";
+import product2 from "../../Public/product2.png";
+import product3 from "../../Public/product3.png";
+import product6 from "../../Public/product6.png";
+import category from "../../Public/category.png";
 
 const page = () => {
   return (
     <div className={`${inter.className} max-w-7xl m-auto xl:px-32 px-5 mt-24`}>
       <div className="flex flex-wrap xl:flex-nowrap gap-16 justify-center text-center xl:justify-start xl:text-left">
+        {/* Product Image */}
         <div className="xl:w-3/4">
           <Image
             className="rounded-xl w-[800px] h-[500px]"
@@ -20,6 +21,7 @@ const page = () => {
             alt="Product"
           ></Image>
         </div>
+        {/* Product Details */}
         <div className="xl:w-1/2 m-0 flex flex-col items-center xl:items-start">
           <h1 className="text-5xl font-bold">Library Stool Chair</h1>
           <p className="bg-primary py-1 px-2 font-medium my-6 text-lg text-white rounded-full inline-block">
@@ -45,62 +47,56 @@ const page = () => {
         </p>
       </div>
 
-        <div className="flex flex-wrap xl:flex-nowrap justify-center mt-14 m-auto items-center xl:container gap-5">
+      {/* Related Products */}
+      <div className="flex flex-wrap xl:flex-nowrap justify-center mt-14 m-auto items-center xl:container gap-5">
+        <div>
+          <div className="group relative rounded w-52 h-52 bg-slate-200 overflow-hidden">
+            <Image src={category} alt="product" />
+          </div>
+          <div className="flex mt-3 justify-between items-center">
+            <h2 className="">Library Stool Chair</h2>
+            <p className="text-sm font-bold">$99</p>
+          </div>
+        </div>
+        <div>
+          <div className="group relative rounded w-52 h-52 bg-slate-200 overflow-hidden">
+            <Image src={product1} alt="product" />
+          </div>
+          <div className="flex mt-3 justify-between items-center">
+            <h2 className="">Library Stool Chair</h2>
+            <p className="text-sm font-bold">$99</p>
+          </div>
+        </div>
 
         <div>
-        <div
-            className="group relative rounded w-52 h-52 bg-slate-200 overflow-hidden">
-            <Image src={category} alt="product"/>
+          <div className="group relative rounded w-52 h-52 bg-slate-200 overflow-hidden">
+            <Image src={product2} alt="product" />
           </div>
           <div className="flex mt-3 justify-between items-center">
-                <h2 className="">Library Stool Chair</h2>
-                <p className="text-sm font-bold">$99</p>
+            <h2 className="">Library Stool Chair</h2>
+            <p className="text-sm font-bold">$99</p>
           </div>
-          </div>
-          <div>
-          <div
-            className="group relative rounded w-52 h-52 bg-slate-200 overflow-hidden">
-            <Image src={product1} alt="product"/>
-          </div>
-          <div className="flex mt-3 justify-between items-center">
-                <h2 className="">Library Stool Chair</h2>
-                <p className="text-sm font-bold">$99</p>
-          </div>
-          </div>
+        </div>
 
-          <div>
-          <div
-            className="group relative rounded w-52 h-52 bg-slate-200 overflow-hidden">
-            <Image src={product2} alt="product"/>
+        <div>
+          <div className="group relative rounded w-52 h-52 bg-slate-200 overflow-hidden">
+            <Image src={product3} alt="product" />
           </div>
           <div className="flex mt-3 justify-between items-center">
-                <h2 className="">Library Stool Chair</h2>
-                <p className="text-sm font-bold">$99</p>
+            <h2 className="">Library Stool Chair</h2>
+            <p className="text-sm font-bold">$99</p>
           </div>
-          </div>
+        </div>
 
-          <div>
-          <div
-            className="group relative rounded w-52 h-52 bg-slate-200 overflow-hidden">
-            <Image src={product3} alt="product"/>
+        <div>
+          <div className="group relative rounded w-52 h-52 bg-slate-200 overflow-hidden">
+            <Image src={product6} alt="product" />
           </div>
           <div className="flex mt-3 justify-between items-center">
-                <h2 className="">Library Stool Chair</h2>
-                <p className="text-sm font-bold">$99</p>
+            <h2 className="">Library Stool Chair</h2>
+            <p className="text-sm font-bold">$99</p>
           </div>
-          </div>
-
-          <div>
-          <div
-            className="group relative rounded w-52 h-52 bg-slate-200 overflow-hidden">
-            <Image src={product6} alt="product"/>
-          </div>
-          <div className="flex mt-3 justify-between items-center">
-                <h2 className="">Library Stool Chair</h2>
-                <p className="text-sm font-bold">$99</p>
-          </div>
-          </div>
-
+        </div>
       </div>
     </div>
   );

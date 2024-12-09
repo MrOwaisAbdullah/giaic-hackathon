@@ -2,9 +2,9 @@ import Link from "next/link";
 import React from "react";
 import logo from "../../Public/Logo Icon.png";
 import Image from "next/image";
-import { FaFacebook } from "react-icons/fa6";
 import { inter } from "@/app/fonts";
 import logos from '../../Public/Logos.png'
+import { FaPinterest, FaYoutube, FaFacebook, FaInstagram, FaTwitter  } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -12,6 +12,7 @@ const Footer = () => {
       <div className="max-w-7xl m-auto xl:px-32 md:px-5 pt-20 pb-10 mx-auto">
         <div className="flex flex-wrap xl:flex-nowrap md:text-left md:items-start items-center text-center order-first">
           <div className="flex flex-col items-center md:items-start md:justify-start justify-center md:w-[30%] px-4 pb-6 gap-5">
+            {/* Logo */}
             <Link
               href="/"
               className={`flex text-2xl justify-start gap-2 font-medium items-center`}
@@ -23,13 +24,13 @@ const Footer = () => {
               Vivamus tristique odio sit amet velit semper, eu posuere turpis
               interdum. Cras egestas purus{" "}
             </p>
-
+            {/* Social Icons */}
             <div className="flex lg:justify-start justify-center items-center mt-7 w-full gap-6 text-grey">
-              <FaFacebook className="cursor-pointer flex justify-center items-center transition-all ease-in-out duration-200  hover:text-primary hover:border text-xl hover:text-4xl hover:p-2 border-primary rounded-full "/>
-              <FaFacebook className="cursor-pointer flex justify-center items-center transition-all ease-in-out duration-200  hover:text-primary hover:border text-xl hover:text-4xl hover:p-2 border-primary rounded-full "/>
-              <FaFacebook className="cursor-pointer flex justify-center items-center transition-all ease-in-out duration-200  hover:text-primary hover:border text-xl hover:text-4xl hover:p-2 border-primary rounded-full "/>
-              <FaFacebook className="cursor-pointer flex justify-center items-center transition-all ease-in-out duration-200  hover:text-primary hover:border text-xl hover:text-4xl hover:p-2 border-primary rounded-full "/>
-              <FaFacebook className="cursor-pointer flex justify-center items-center transition-all ease-in-out duration-200  hover:text-primary hover:border text-xl hover:text-4xl hover:p-2 border-primary rounded-full "/>
+              <FaFacebook className="cursor-pointer flex justify-center items-center transition-all ease-in-out duration-200  hover:text-primary hover:border text-xl hover:text-2xl hover:p-1 border-primary rounded-full "/>
+              <FaTwitter className="cursor-pointer flex justify-center items-center transition-all ease-in-out duration-200  hover:text-primary hover:border text-xl hover:text-2xl hover:p-1 border-primary rounded-full "/>
+              <FaInstagram className="cursor-pointer flex justify-center items-center transition-all ease-in-out duration-200  hover:text-primary hover:border text-xl hover:text-2xl hover:p-1 border-primary rounded-full "/>
+              <FaPinterest className="cursor-pointer flex justify-center items-center transition-all ease-in-out duration-200  hover:text-primary hover:border text-xl hover:text-2xl hover:p-1 border-primary rounded-full "/>
+              <FaYoutube className="cursor-pointer flex justify-center items-center transition-all ease-in-out duration-200  hover:text-primary hover:border text-xl hover:text-2xl hover:p-1 border-primary rounded-full "/>
               
             </div>
           </div>

@@ -31,7 +31,10 @@ const ProductCard: React.FC<ProductCards> = ({
             isDiscount || isNew ? "flex justify-between" : "flex justify-end"
           }`}
         >
+          {/* Dynamically add Product Image */}
           <Image src={pImage} alt={name} width={1000} height={1500}/>
+
+          {/* dynamically add the New or Discount Tag if they provided */}
           <div
             className={`${
               isDiscount
@@ -52,7 +55,8 @@ const ProductCard: React.FC<ProductCards> = ({
           </div>
         </div>
       </div>
-
+      
+      {/* Dynamically adding Product Name, new Prices and old price, if the old price is not provided dont show it  */}
       <div className="flex justify-between items-center gap-3 ">
         <div className="flex flex-col mt-0 pt-0 justify-left text-left">
           <h2 className="group-hover:text-primary mb-1">{name}</h2>
