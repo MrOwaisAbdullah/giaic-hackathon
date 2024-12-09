@@ -5,7 +5,7 @@ A pixel-perfect, responsive e-commerce website built using **Next.js**, **Tailwi
 ## Features
 
 ### Pages:
-- **Home Page**: Includes a Hero section, Header, and Footer.
+- **Home Page**: Includes a Hero section, Products, Header, and Footer.
 - **Shop Page**: Displays a grid of products with dynamic product cards.
 - **Single Product Page**: Shows detailed information about a product.
 - **Cart Page**: Lists items added to the cart.
@@ -20,39 +20,6 @@ A pixel-perfect, responsive e-commerce website built using **Next.js**, **Tailwi
 - **Tailwind CSS**: For styling and responsiveness.
 - **Custom CSS**: Added global default styles in `globals.css`.
 - **ShadCN UI**: Used for creating a responsive drawer for the navigation menu.
-
-## Setup Instructions
-
-### Prerequisites
-- Node.js (Latest LTS version)
-- npm or yarn
-
-### Installation
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd project-directory
-   ```
-3. Install dependencies:
-   ```bash
-   npm install
-   ```
-4. Run the development server:
-   ```bash
-   npm run dev
-   ```
-5. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-### Deployment
-The project is deployed on Vercel. Visit the live demo [https://giaic-hackathon-kohl.vercel.app/](https://giaic-hackathon-kohl.vercel.app/).
-
-To deploy your own version:
-1. Create a Vercel account.
-2. Link the GitHub repository to Vercel.
-3. Deploy with a single click using Vercel's UI.
 
 ## Problems Faced and Solutions
 
@@ -88,6 +55,40 @@ To deploy your own version:
             </Link>
   ```
   This ensured the drawer closed seamlessly when the user clicked any link.
+
+
+## Setup Instructions
+
+### Prerequisites
+- Node.js (Latest LTS version)
+- npm or yarn
+
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd project-directory
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
+5. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+### Deployment
+The project is deployed on Vercel. Visit the live demo [https://giaic-hackathon-kohl.vercel.app/](https://giaic-hackathon-kohl.vercel.app/).
+
+To deploy your own version:
+1. Create a Vercel account.
+2. Link the GitHub repository to Vercel.
+3. Deploy with a single click using Vercel's UI.
 
 ## Evaluation Criteria
 1. **Pixel-perfect Implementation**: Adhered closely to the assigned Figma template.
