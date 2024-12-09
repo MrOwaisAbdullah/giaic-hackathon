@@ -1,13 +1,15 @@
 import React from "react";
 import { inter } from "../../app/fonts";
 import { PiShoppingCart } from "react-icons/pi";
+import Image from "next/image";
+// import product from "../../public/product1.png"
 
 interface ProductCards {
   name: string;
   oldPrice?: number;
   newPrice: number;
   isDiscount?: boolean;
-  image: string;
+  pImage: string;
   isNew?: boolean;
 }
 
@@ -16,27 +18,25 @@ const ProductCard: React.FC<ProductCards> = ({
   oldPrice,
   newPrice,
   isDiscount,
-  image,
+  pImage,
   isNew,
 }) => {
   return (
-    <div className={`${inter.className} group min-w-64 items-center`}>
+    <div className={`${inter.className} cursor-pointer group min-w-64 items-center`}>
       <div
-        className="cursor-pointer z-0 relative group min-h-56 max-h-96 md:max-w-64 md:max-h-56 bg-graybg p-3 rounded overflow-hidden bg-contain bg-no-repeat bg-center"
-        style={{
-          backgroundImage: `url(${image})`,
-          backgroundSize: "100% 120%",
-        }}
+        className="cursor-pointer z-0 relative group min-h-56 max-h-96 md:max-w-64 md:max-h-56 bg-graybg rounded overflow-hidden"
       >
+        
         <div
           className={`${
             isDiscount || isNew ? "flex justify-between" : "flex justify-end"
           }`}
         >
+          <Image src={pImage} alt={name} width={1000} height={1500}/>
           <div
             className={`${
               isDiscount
-                ? "bg-highlight max-w-20 z-10 max-h-7 flex flex-wrap p-1 px-2 rounded text-white text-xs overflow-hidden justify-center items-center"
+                ? "bg-highlight absolute top-3 left-3 max-w-20 z-10 max-h-7 flex flex-wrap p-1 px-2 rounded text-white text-xs overflow-hidden justify-center items-center"
                 : "hidden"
             }`}
           >
@@ -45,7 +45,7 @@ const ProductCard: React.FC<ProductCards> = ({
           <div
             className={`${
               isNew
-                ? "bg-highlight2 max-w-20 z-10 max-h-7 flex flex-wrap p-1 px-2 rounded text-white text-xs overflow-hidden justify-center items-center"
+                ? "bg-highlight2 absolute top-3 left-3 max-w-20 z-10 max-h-7 flex flex-wrap p-1 px-2 rounded text-white text-xs overflow-hidden justify-center items-center"
                 : "hidden"
             }`}
           >
@@ -56,7 +56,7 @@ const ProductCard: React.FC<ProductCards> = ({
 
       <div className="flex justify-between items-center gap-3 ">
         <div className="flex flex-col mt-0 pt-0 justify-left text-left">
-          <h2 className="group-hover:text-primary my-1">{name}</h2>
+          <h2 className="group-hover:text-primary mb-1">{name}</h2>
           <div className="flex gap-1 -mt-1 flex-col">
             <p className="text-lg font-medium">{`$${newPrice}`}</p>
             <p

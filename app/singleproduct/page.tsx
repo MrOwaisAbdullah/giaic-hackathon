@@ -3,6 +3,11 @@ import React from "react";
 import product from "../../Public/product7.png";
 import { inter } from "../fonts";
 import { PiShoppingCart } from "react-icons/pi";
+import product1 from "../../public/product1.png"
+import product2 from "../../public/product2.png"
+import product3 from "../../public/product3.png"
+import product6 from "../../public/product6.png"
+import category from "../../public/category.png"
 
 const page = () => {
   return (
@@ -43,13 +48,10 @@ const page = () => {
         <div className="flex flex-wrap xl:flex-nowrap justify-center mt-14 m-auto items-center xl:container gap-5">
 
         <div>
-          <div
-            className="group relative rounded w-52 h-52 bg-slate-200 bg-[url('/category.png')] bg-cover bg-center overflow-hidden"
-            style={{
-              backgroundSize: "100% 100%",
-              backgroundPosition: "right bottom",
-            }}
-          ></div>
+        <div
+            className="group relative rounded w-52 h-52 bg-slate-200 overflow-hidden">
+            <Image src={category} alt="product"/>
+          </div>
           <div className="flex mt-3 justify-between items-center">
                 <h2 className="">Library Stool Chair</h2>
                 <p className="text-sm font-bold">$99</p>
@@ -57,12 +59,9 @@ const page = () => {
           </div>
           <div>
           <div
-            className="group relative rounded w-52 h-52 bg-slate-200 bg-[url('/product1.png')] bg-cover bg-center overflow-hidden"
-            style={{
-              backgroundSize: "100% 100%",
-              backgroundPosition: "right bottom",
-            }}
-          ></div>
+            className="group relative rounded w-52 h-52 bg-slate-200 overflow-hidden">
+            <Image src={product1} alt="product"/>
+          </div>
           <div className="flex mt-3 justify-between items-center">
                 <h2 className="">Library Stool Chair</h2>
                 <p className="text-sm font-bold">$99</p>
@@ -71,12 +70,9 @@ const page = () => {
 
           <div>
           <div
-            className="group relative rounded w-52 h-52 bg-slate-200 bg-[url('/product2.png')] bg-cover bg-center overflow-hidden"
-            style={{
-              backgroundSize: "100% 100%",
-              backgroundPosition: "right bottom",
-            }}
-          ></div>
+            className="group relative rounded w-52 h-52 bg-slate-200 overflow-hidden">
+            <Image src={product2} alt="product"/>
+          </div>
           <div className="flex mt-3 justify-between items-center">
                 <h2 className="">Library Stool Chair</h2>
                 <p className="text-sm font-bold">$99</p>
@@ -85,12 +81,9 @@ const page = () => {
 
           <div>
           <div
-            className="group relative rounded w-52 h-52 bg-slate-200 bg-[url('/product3.png')] bg-cover bg-center overflow-hidden"
-            style={{
-              backgroundSize: "100% 100%",
-              backgroundPosition: "right bottom",
-            }}
-          ></div>
+            className="group relative rounded w-52 h-52 bg-slate-200 overflow-hidden">
+            <Image src={product3} alt="product"/>
+          </div>
           <div className="flex mt-3 justify-between items-center">
                 <h2 className="">Library Stool Chair</h2>
                 <p className="text-sm font-bold">$99</p>
@@ -99,12 +92,9 @@ const page = () => {
 
           <div>
           <div
-            className="group relative rounded w-52 h-52 bg-slate-200 bg-[url('/product6.png')] bg-cover bg-center overflow-hidden"
-            style={{
-              backgroundSize: "100% 100%",
-              backgroundPosition: "right bottom",
-            }}
-          ></div>
+            className="group relative rounded w-52 h-52 bg-slate-200 overflow-hidden">
+            <Image src={product6} alt="product"/>
+          </div>
           <div className="flex mt-3 justify-between items-center">
                 <h2 className="">Library Stool Chair</h2>
                 <p className="text-sm font-bold">$99</p>
