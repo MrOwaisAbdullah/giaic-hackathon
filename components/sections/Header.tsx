@@ -160,7 +160,7 @@ const Header = () => {
             </Link>
 
             <Link
-              href="/"
+              href="/about"
               className="mr-9 text-sm text-[#636270] active:text-primary hover:text-primary"
             >
               About
