@@ -4,7 +4,7 @@ import { FaPlus } from 'react-icons/fa6'
 
 const page = () => {
   return (
-    <div className={`${poppins.className} container m-auto pt-28 -mb-28 max-w-7xl`}>
+    <div className={`${poppins.className} m-auto pt-28 -mb-28 max-w-7xl`}>
     <h2 className={`heading text-center font-semibold text-4xl`}>Questions Looks Here</h2>
     <p className={`xl:px-40 text-center text-[#9F9F9F]`}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the </p>
     

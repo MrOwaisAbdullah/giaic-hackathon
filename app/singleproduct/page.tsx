@@ -11,23 +11,23 @@ import category from "../../Public/category.png";
 
 const page = () => {
   return (
-    <div className={`${inter.className} max-w-7xl m-auto xl:px-32 px-5 mt-24`}>
-      <div className="flex flex-wrap xl:flex-nowrap gap-16 justify-center text-center xl:justify-start xl:text-left">
+    <div className={`${inter.className} max-w-7xl m-auto xl:px-0 px-5 mt-24`}>
+      <div className="flex flex-wrap xl:flex-nowrap gap-36 justify-center text-center xl:justify-start xl:text-left">
         {/* Product Image */}
-        <div className="xl:w-3/4">
+        <div className="">
           <Image
-            className="rounded-xl xl:w-[800px] xl:h-[500px]"
+            className="rounded-xl xl:ml-14 xl:w-[800px] xl:h-[550px]"
             src={product}
             alt="Product"
           ></Image>
         </div>
         {/* Product Details */}
         <div className="xl:w-1/2 m-0 flex flex-col items-center xl:items-start">
-          <h1 className="text-5xl font-bold">Library Stool Chair</h1>
+          <h1 className="text-5xl xl:w-96 font-bold">Library Stool Chair</h1>
           <p className="bg-primary py-1 px-2 font-medium my-6 text-lg text-white rounded-full inline-block">
             $20.00 USD
           </p>
-          <p className="text-lg py-10 border-t ">
+          <p className="text-lg py-10 border-t text-[#7d7b8e]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
             tincidunt erat enim. Lorem ipsum dolor sit amet, consectetur
             adipiscing
@@ -40,8 +40,8 @@ const page = () => {
         <div></div>
       </div>
 
-      <div className="flex justify-between mt-24">
-        <h2 className="text-2xl font-bold">Featured Products</h2>
+      <div className="flex justify-between mx-5 mt-24">
+        <h2 className="text-2xl uppercase font-bold">Featured Products</h2>
         <p className="text-lg font-bold underline underline-offset-4">
           View All
         </p>
@@ -50,7 +50,7 @@ const page = () => {
       {/* Related Products */}
       <div className="flex flex-wrap xl:flex-nowrap justify-center mt-14 m-auto items-center xl:container gap-5">
         <div>
-          <div className="group relative rounded xs:h-[350px] xs:w-[350px] sm:w-96 sm:h-96 xl:w-52 xl:h-52 bg-slate-200 overflow-hidden">
+          <div className="group relative rounded xs:h-[350px] xs:w-[350px] sm:w-96 sm:h-96 xl:w-60 xl:h-60 bg-slate-200 overflow-hidden">
             <Image src={category} alt="product" />
           </div>
           <div className="flex mt-3 justify-between items-center">
@@ -59,7 +59,7 @@ const page = () => {
           </div>
         </div>
         <div>
-          <div className="group relative rounded xs:h-[350px] xs:w-[350px] sm:w-96 sm:h-96 xl:w-52 xl:h-52 bg-slate-200 overflow-hidden">
+          <div className="group relative rounded xs:h-[350px] xs:w-[350px] sm:w-96 sm:h-96 xl:w-60 xl:h-60 bg-slate-200 overflow-hidden">
             <Image src={product1} alt="product" />
           </div>
           <div className="flex mt-3 justify-between items-center">
@@ -69,7 +69,7 @@ const page = () => {
         </div>
 
         <div>
-          <div className="group relative rounded xs:h-[350px] xs:w-[350px] sm:w-96 sm:h-96 xl:w-52 xl:h-52 bg-slate-200 overflow-hidden">
+          <div className="group relative rounded xs:h-[350px] xs:w-[350px] sm:w-96 sm:h-96 xl:w-60 xl:h-60 bg-slate-200 overflow-hidden">
             <Image src={product2} alt="product" />
           </div>
           <div className="flex mt-3 justify-between items-center">
@@ -79,7 +79,7 @@ const page = () => {
         </div>
 
         <div>
-          <div className="group relative rounded xs:h-[350px] xs:w-[350px] sm:w-96 sm:h-96 xl:w-52 xl:h-52 bg-slate-200 overflow-hidden">
+          <div className="group relative rounded xs:h-[350px] xs:w-[350px] sm:w-96 sm:h-96 xl:w-60 xl:h-60 bg-slate-200 overflow-hidden">
             <Image src={product3} alt="product" />
           </div>
           <div className="flex mt-3 justify-between items-center">
@@ -89,7 +89,7 @@ const page = () => {
         </div>
 
         <div>
-          <div className="group relative rounded xs:h-[350px] xs:w-[350px] sm:w-96 sm:h-96 xl:w-52 xl:h-52 bg-slate-200 overflow-hidden">
+          <div className="group relative rounded xs:h-[350px] xs:w-[350px] sm:w-96 sm:h-96 xl:w-60 xl:h-60 bg-slate-200 overflow-hidden">
             <Image src={product6} alt="product" />
           </div>
           <div className="flex mt-3 justify-between items-center">

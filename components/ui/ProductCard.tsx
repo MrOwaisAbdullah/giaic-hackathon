@@ -21,7 +21,7 @@ const ProductCard: React.FC<ProductCards> = ({
   isNew,
 }) => {
   return (
-    <div className={`${inter.className} cursor-pointer group min-w-64 items-center`}>
+    <div className={`${inter.className} relative flex flex-col cursor-pointer group min-w-72 items-center`}>
       <div
         className="cursor-pointer z-0 relative group min-h-56 max-h-96 md:max-w-64 md:max-h-56 bg-graybg rounded overflow-hidden"
       >
@@ -57,8 +57,8 @@ const ProductCard: React.FC<ProductCards> = ({
       </div>
       
       {/* Dynamically adding Product Name, new Prices and old price, if the old price is not provided dont show it  */}
-      <div className="flex justify-between items-center gap-3 ">
-        <div className="flex flex-col mt-0 pt-0 justify-left text-left">
+      <div className="relative flex items-center justify-between ">
+        <div className="flex flex-col mr-24 xs:mr-64 md:mr-20 p-0 justify-left text-left">
           <h2 className="group-hover:text-primary mb-1">{name}</h2>
           <div className="flex gap-1 -mt-1 flex-col">
             <p className="text-lg font-medium">{`$${newPrice}`}</p>

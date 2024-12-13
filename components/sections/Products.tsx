@@ -11,9 +11,9 @@ import product7 from "../../Public/product7.png"
 
 const Products = () => {
   return (
-    <section className={`${inter.className} xl:px-5 pt-16`}>
-    <h2 className='heading text-center px-2 xl:text-left xl:px-28'>Our Products</h2>
-    <div className='flex flex-wrap px-6 justify-center items-center gap-5'>
+    <section className={`${inter.className} px-5 xl:px-0 mt-36`}>
+    <h2 className='heading text-center px-2 xl:px-0'>Our Products</h2>
+    <div className='flex flex-wrap px-6 xl:px-0 m-auto justify-center items-center gap-5 xl:gap-0'>
       {/* Product Cards */}
         <ProductCard pImage={product1} newPrice={20} name='Library Stool Chair' isNew={true}  />
         <ProductCard pImage={product7} newPrice={20} name='Library Stool Chair' isDiscount={true}/>

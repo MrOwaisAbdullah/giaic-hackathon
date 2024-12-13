@@ -28,7 +28,7 @@ const Header = () => {
     <header className={`${inter.className}`}>
       {/* Upper Section */}
       <div className=" bg-accent">
-        <div className="max-w-7xl m-auto w-full flex flex-col md:flex-row gap-2 xl:px-36 pt-1 lg:py-3 text-[#BEBDC7] items-center justify-between ">
+        <div className="max-w-7xl m-auto w-full flex flex-col md:flex-row gap-2 xl:px-0 pt-1 lg:py-3 text-[#BEBDC7] items-center justify-between ">
           <div>
             <p className="flex sm:flex-row flex-col xl:justify-center text-xs text-start">
               &#x2713; &nbsp; Free shipping on all orders over $50
@@ -132,7 +132,7 @@ const Header = () => {
       </div>
       {/* Bottom Section, Hidden on smaller devices */}
       <div className="hidden lg:flex border-b">
-        <div className="flex max-w-7xl m-auto w-full text-text justify-between px-5 lg:px-12 xl:px-32 h-[5.5rem]">
+        <div className="flex max-w-7xl m-auto w-full text-text justify-between px-5 lg:px-12 xl:px-0 h-[5.5rem]">
           <div className="flex flex-wrap items-center text-base">
             <Link
               href="/"

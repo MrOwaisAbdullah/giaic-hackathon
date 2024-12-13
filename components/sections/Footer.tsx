@@ -9,7 +9,7 @@ import { FaPinterest, FaYoutube, FaFacebook, FaInstagram, FaTwitter  } from "rea
 const Footer = () => {
   return (
     <footer className={`${inter.className} border-t mt-28`}>
-      <div className="max-w-7xl m-auto xl:px-32 md:px-5 pt-20 pb-10 mx-auto">
+      <div className="max-w-7xl m-auto xl:px-0 md:px-5 pt-20 pb-10 mx-auto">
         <div className="flex flex-wrap xl:flex-nowrap md:text-left md:items-start items-center text-center order-first">
           <div className="flex flex-col items-center md:items-start md:justify-start justify-center md:w-[30%] px-4 pb-6 gap-5">
             {/* Logo */}
@@ -112,7 +112,7 @@ const Footer = () => {
       </div>
 
       <div className="max-w-7xl m-auto border-t px-4">
-        <div className="justify-center lg:justify-left xl:px-32 py-4 mx-auto flex items-center sm:flex-row flex-col">
+        <div className="justify-center lg:justify-left xl:px-0 py-4 mx-auto flex items-center sm:flex-row flex-col">
           <p className="text-sm text-center lg:text-left text-gray-500 sm:mt-0 mt-4">
           @ 2024 - Designed & Develop by 
             <a

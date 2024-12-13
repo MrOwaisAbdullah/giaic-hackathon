@@ -9,8 +9,8 @@ import product7 from "../../Public/product7.png"
 
 const FeatueredProducts = () => {
   return (
-    <section className={`${inter.className} xl:px-5 pt-16`}>
-    <h2 className='heading text-center px-2 xl:text-left xl:px-28'>Featured Products</h2>
+    <section className={`${inter.className} pt-16`}>
+    <h2 className='heading text-center px-2 xl:text-left xl:px-0'>Featured Products</h2>
     <div className='container flex flex-wrap xl:flex-nowrap justify-center items-center gap-5'>
         <ProductCard pImage={product1} newPrice={20} name='Library Stool Chair' isNew={true}  />
         <ProductCard pImage={product7} newPrice={20} name='Library Stool Chair' isDiscount={true}/>

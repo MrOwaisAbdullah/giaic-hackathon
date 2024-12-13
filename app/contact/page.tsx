@@ -9,7 +9,7 @@ import { SlTrophy } from "react-icons/sl";
 
 const Contact = () => {
   return (
-    <div className={`${poppins.className} container pt-28 -mb-28 max-w-7xl m-auto`}>
+    <div className={`${poppins.className} pt-28 -mb-28 max-w-7xl m-auto`}>
       <h2 className={`heading text-center font-semibold text-4xl`}>
         Get In Touch With Us
       </h2>
@@ -109,7 +109,7 @@ const Contact = () => {
         </div>
       </div>
 
-      <div className="flex flex-wrap justify-center xl:flex-nowrap w-full bg-secondary py-28 mt-10 px-10 gap-10">
+      <div className="flex flex-wrap justify-around xl:flex-nowrap w-full bg-secondary py-28 mt-10 gap-10">
         <div className="flex gap-5 justify-center items-center ">
           <SlTrophy className="text-5xl" />
           <div>
