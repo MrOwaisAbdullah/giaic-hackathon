@@ -21,7 +21,7 @@ const ProductCard: React.FC<ProductCards> = ({
   isNew,
 }) => {
   return (
-    <div className={`${inter.className} relative flex flex-col cursor-pointer group min-w-72 items-center`}>
+    <div className={`${inter.className} relative flex flex-col cursor-pointer group min-w-72 items-center mt-5`}>
       <div
         className="cursor-pointer z-0 relative group min-h-56 max-h-96 md:max-w-64 md:max-h-56 bg-graybg rounded overflow-hidden"
       >

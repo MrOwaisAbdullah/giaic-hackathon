@@ -20,7 +20,7 @@ const About = () => {
           <p className='text-sm'>At Comforty, we believe that the right chair can transform your space and elevate your comfort. Specializing in ergonomic design, premium materials, and modern aesthetics, we craft chairs that seamlessly blend style with functionality. </p>
           <button className='bg-white/15 mt-20 py-3 px-5 w-1/2'>View Collection</button>
           </div>
-        <Image src={aboutImage} alt='About Comforty' className='hidden xl:block xl:w-1/2'/>
+        <Image src={aboutImage} alt='About Comforty' className='hidden xl:block xl:w-1/2 object-cover'/>
       </div>
 
       <div className='flex flex-col px-6'>
@@ -63,7 +63,7 @@ const About = () => {
       </div>
 
       <div className='lg:w-1/4 w-full flex flex-col gap-2 items-center xl:items-start'>
-        <Image className='' src={aboutImage4} alt='About'/>
+        <Image className='object-top' src={aboutImage4} alt='About'/>
         <p className='text-xl'>The Dandy chair</p>
         <p className='text-lg -mt-1'>$99.00</p>
       </div>

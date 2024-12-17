@@ -16,7 +16,7 @@ const page = () => {
         {/* Product Image */}
         <div className="">
           <Image
-            className="rounded-xl xl:ml-14 xl:w-[800px] xl:h-[550px]"
+            className="rounded-xl xl:ml-14 xl:w-[800px] xl:h-[550px] object-cover"
             src={product}
             alt="Product"
           ></Image>
