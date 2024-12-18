@@ -14,38 +14,38 @@ const About = () => {
   return (
     <div className={`${inter.className} relative max-w-7xl m-auto`}>
 
-      <div className='flex flex-wrap xl:flex-nowrap px-8 xl:px-0 xl:max-h-96 gap-5 my-20'>
-        <div className='flex flex-col gap-5 bg-[#007580] p-12 text-white w-full xl:w-1/2'>
+      <div className='flex flex-wrap xl:flex-nowrap px-5 xl:px-0 xl:max-h-96 gap-5 my-20'>
+        <div className='flex flex-col gap-5 bg-[#007580] p-4 lg:p-12 text-white w-full xl:w-1/2'>
           <h1 className='text-3xl font-bold'>About Us - Comforty</h1>
           <p className='text-sm'>At Comforty, we believe that the right chair can transform your space and elevate your comfort. Specializing in ergonomic design, premium materials, and modern aesthetics, we craft chairs that seamlessly blend style with functionality. </p>
-          <button className='bg-white/15 mt-20 py-3 px-5 w-1/2'>View Collection</button>
+          <button className='bg-white/15 mt-20 py-3 px-5 sm:w-1/2'>View Collection</button>
           </div>
-        <Image src={aboutImage} alt='About Comforty' className='hidden xl:block xl:w-1/2 object-cover'/>
+        <Image src={aboutImage} alt='About Comforty' className='xl:w-1/2 object-cover'/>
       </div>
 
-      <div className='flex flex-col px-6'>
-        <h2 className='text-3xl font-semibold text-center'>What Makes Our Brand Different</h2>
+      <div className='flex flex-col lg:px-6'>
+        <h2 className='text-xl lg:text-3xl font-semibold text-center'>What Makes Our Brand Different</h2>
         {/* Content */}
-        <div className='flex flex-wrap xl:flex-nowrap justify-center gap-5 xl:px-0 px-5 py-10'>
-          <div className='flex flex-col gap-2 bg-secondary rounded text-primary px-10 py-6 w-full md:w-1/2 xl:w-1/4'>
+        <div className='grid grid-col-1 sm:grid-cols-2 xl:grid-cols-4 justify-center items-center content-center place-content-center gap-5 xl:px-0 px-5 py-10'>
+          <div className='flex flex-col gap-2 bg-secondary rounded text-primary px-10 py-6 w-full'>
           <TbTruckDelivery className='text-2xl'/>
           <h3 className='text-lg'>Next day as standard</h3>
           <p className='text-sm'>Order before 3pm and get your order the next day as standard</p>
           </div>
 
-          <div className='flex flex-col gap-2 bg-secondary rounded text-primary px-10 py-6 w-full md:w-1/2 xl:w-1/4'>
+          <div className='flex flex-col gap-2 bg-secondary rounded text-primary px-10 py-6 w-full'>
           <IoCheckmarkCircleOutline className='text-2xl'/>
           <h3 className='text-lg'>Made by true artisans</h3>
           <p className='text-sm'>Handmade crafted goods made with real passion and craftmanship</p>
           </div>
 
-          <div className='flex flex-col gap-2 bg-secondary rounded text-primary px-10 py-6 w-full md:w-1/2 xl:w-1/4'>
+          <div className='flex flex-col gap-2 bg-secondary rounded text-primary px-10 py-6 w-full'>
           <HiOutlineCreditCard className='text-2xl'/>
           <h3 className='text-lg'>Unbeatable prices</h3>
           <p className='text-sm'>For our materials and quality you won’t find better prices anywhere</p>
           </div>
 
-          <div className='flex flex-col gap-2 bg-secondary rounded text-primary px-10 py-6 w-full md:w-1/2 xl:w-1/4'>
+          <div className='flex flex-col gap-2 bg-secondary rounded text-primary px-10 py-6 w-full'>
           <PiPlantLight className='text-2xl'/>
           <h3 className='text-lg'>Recycled packaging</h3>
           <p className='text-sm'>We use 100% recycled to ensure our footprint is more manageable</p>

@@ -9,16 +9,16 @@ import Image from 'next/image'
 
 const Gallery = () => {
   return (
-    <section className='grid grid-cols-1 gap-5 xl:gap-0 xl:grid-cols-[auto,auto] px-28 xl:px-0 m-auto mt-52 w-full'>
+    <section className='grid grid-cols-1 gap-5 xl:gap-0 md:grid-cols-[auto,auto] px-5 xl:px-0 m-auto mt-52 w-full'>
       {/* vertical Text */}
       <div
-        className={`${roboto.className} xl:hidden block text-2xl font-medium text-center text-black`}
+        className={`${roboto.className} md:hidden block text-2xl font-medium text-center text-black`}
       >
         EXPLORE NEW AND POPULAR STYLES
       </div>
       <div className='flex'>
               <div
-        className={`${roboto.className} hidden xl:block text-lg  xl:text-[28px] font-medium text-center text-black rotate-180`}
+        className={`${roboto.className} hidden md:block text-lg  xl:text-[28px] font-medium text-center text-black rotate-180`}
         style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
       >
         EXPLORE NEW AND POPULAR STYLES
@@ -30,7 +30,7 @@ const Gallery = () => {
         </div>
         </div>
       {/* four small images */}
-        <div className='grid grid-cols-1 md:grid-cols-[auto,auto] gap-7 xl:max-h-[550px] w-full'>
+        <div className='grid grid-cols-1 sm:grid-cols-[auto,auto] gap-7 xl:max-h-[550px] w-full'>
         <div
           className="group relative bg-slate-200 overflow-hidden">
              <Image src={product5} alt='Product'></Image>

@@ -25,7 +25,7 @@ const Header = () => {
   const closeDrawer = () => setIsOpen(false);
 
   return (
-    <header className={`${inter.className}`}>
+    <header className={`${inter.className} overflow-hidden`}>
       {/* Upper Section */}
       <div className=" bg-accent">
         <div className="max-w-7xl m-auto w-full flex flex-col md:flex-row gap-2 xl:px-0 pt-1 lg:py-3 text-[#BEBDC7] items-center justify-between ">
@@ -51,7 +51,7 @@ const Header = () => {
       </div>
       {/* Middle Section */}
       <div
-        className={`flex  bg-secondary w-full text-text justify-between lg:content-center px-5 lg:px-12 xl:px-36 h-[5.5rem]`}
+        className={`flex  bg-secondary w-full text-text justify-between lg:content-center px-5 lg:px-12 h-[5.5rem]`}
       >
         <div className=" flex max-w-7xl m-auto pt-5 pb-2 w-full flex-row justify-between items-center">
           <Link

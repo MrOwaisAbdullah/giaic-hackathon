@@ -32,7 +32,7 @@ const ProductCard: React.FC<ProductCards> = ({
           }`}
         >
           {/* Dynamically add Product Image */}
-          <Image src={pImage} alt={name} width={1000} height={1500}/>
+          <Image className="object-cover" src={pImage} alt={name} width={1000} height={1500}/>
 
           {/* dynamically add the New or Discount Tag if they provided */}
           <div

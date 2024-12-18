@@ -7,7 +7,7 @@ import Products from "@/components/sections/Products";
 
 export default function Home() {
   return (
-    <div className="max-w-7xl m-auto">
+    <div className="max-w-7xl m-auto overflow-hidden">
       <Hero />
       <Clients />
       <FeatueredProducts />
