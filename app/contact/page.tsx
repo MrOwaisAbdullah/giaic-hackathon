@@ -9,23 +9,23 @@ import { SlTrophy } from "react-icons/sl";
 
 const Contact = () => {
   return (
-    <div className={`${poppins.className} pt-28 -mb-28 xl:px-0 px-8 max-w-7xl m-auto`}>
-      <h2 className={`heading text-center font-semibold text-4xl`}>
+    <div className={`${poppins.className} pt-28 -mb-28 max-w-7xl m-auto`}>
+      <h2 className={`heading xl:px-0 px-8 text-center font-semibold text-4xl`}>
         Get In Touch With Us
       </h2>
-      <p className={`xl:px-40 text-center text-[#9F9F9F]`}>
+      <p className={`xl:px-40 px-8 text-center text-[#9F9F9F]`}>
         For More Information About Our Product & Services. Please Feel Free To
         Drop Us An Email. Our Staff Always Be There To Help You Out. Do Not
         Hesitate!
       </p>
 
-      <div className="flex flex-wrap xl:flex-nowrap mt-28 px-5 xl:px-28">
+      <div className="flex flex-wrap xl:flex-nowrap mt-28 px-8 xl:px-28 justify-center xl:justify-start">
         <div className={`${inter.className} pb-20 flex flex-col gap-20`}>
           <div className="flex gap-5">
             <IoLocation className="text-4xl" />
             <div>
               <h4 className="text-xl font-medium">Address</h4>
-              <p className="w-48">
+              <p className="lg:w-48">
                 236 5th SE Avenue, New York NY10000, United States
               </p>
             </div>
@@ -34,7 +34,7 @@ const Contact = () => {
             <FaPhoneAlt className="text-4xl" />
             <div>
               <h4 className="text-xl font-medium">Phone</h4>
-              <p className="w-48">
+              <p className="lg:w-48">
                 Mobile: +(84) 546-6789 <br />
                 Hotline: +(84) 456-6789
               </p>
@@ -44,7 +44,7 @@ const Contact = () => {
             <IoIosTime className="text-4xl" />
             <div>
               <h4 className="text-xl font-medium">Working Time</h4>
-              <p className="w-48">
+              <p className="lg:w-48">
                 Monday-Friday: 9:00 - 22:00 <br />
                 Saturday-Sunday: 9:00 - 21:00
               </p>
@@ -54,7 +54,7 @@ const Contact = () => {
 
         {/* Conatct Form */}
 
-        <div className="md:w-1/2 bg-white flex flex-col md:ml-auto w-full -mt-10 md:py-8">
+        <div className="xl:w-1/2 max-w-xl justify-center bg-white flex flex-col xl:ml-auto w-full -mt-10 md:py-8">
           <div className="relative mb-5">
             <label htmlFor="name" className="leading-7 text-sm font-medium">
               Your Name
@@ -109,7 +109,7 @@ const Contact = () => {
         </div>
       </div>
 
-      <div className="flex flex-wrap justify-around xl:flex-nowrap w-full bg-secondary py-28 mt-10 gap-10">
+      <div className="flex flex-wrap justify-center xl:justify-around xl:flex-nowrap w-full bg-secondary py-28 mt-10 gap-10">
         <div className="flex gap-5 justify-center items-center ">
           <SlTrophy className="text-5xl" />
           <div>

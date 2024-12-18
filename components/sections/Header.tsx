@@ -28,7 +28,7 @@ const Header = () => {
     <header className={`${inter.className} overflow-hidden`}>
       {/* Upper Section */}
       <div className=" bg-accent">
-        <div className="max-w-7xl m-auto w-full flex flex-col md:flex-row gap-2 xl:px-0 pt-1 lg:py-3 text-[#BEBDC7] items-center justify-between ">
+        <div className="max-w-7xl m-auto w-full flex flex-col md:flex-row gap-2 xl:px-0 pt-1 px-3 py-3 text-[#BEBDC7] items-center justify-between ">
           <div>
             <p className="flex sm:flex-row flex-col xl:justify-center text-xs text-start">
               &#x2713; &nbsp; Free shipping on all orders over $50
@@ -51,7 +51,7 @@ const Header = () => {
       </div>
       {/* Middle Section */}
       <div
-        className={`flex  bg-secondary w-full text-text justify-between lg:content-center px-5 lg:px-12 h-[5.5rem]`}
+        className={`flex  bg-secondary w-full text-text lg:justify-between px-5 lg:px-12 h-[5.5rem]`}
       >
         <div className=" flex max-w-7xl m-auto pt-5 pb-2 w-full flex-row justify-between items-center">
           <Link
@@ -61,8 +61,9 @@ const Header = () => {
             <Image src={logo} alt=""></Image>
             Comforty
           </Link>
+          <div className="flex gap-5">
           <Link href={"/cart"}>
-            <div className="bg-white py-3 px-5 rounded-xl gap-3 hidden sm:flex items-center">
+            <div className="bg-white py-3 px-5 rounded-xl gap-3 hidden xs:flex max-w-40 ">
               <PiShoppingCart className="text-2xl flex" />
               <p>Cart</p>
               <div className="rounded-full w-5 h-5 flex justify-center items-center text-white bg-primary">
@@ -91,28 +92,28 @@ const Header = () => {
               <div className="flex flex-col gap-5 text-2xl">
                 <Link
                   href="/"
-                  className="mr-9 text-sm  text-[#636270] active:text-primary hover:text-primary"
+                  className="mr-9 text-lg  text-[#636270] active:text-primary hover:text-primary"
                   onClick={closeDrawer}
                 >
                   Home
                 </Link>
                 <Link
                   href="/products"
-                  className="mr-9 text-sm text-[#636270] active:text-primary hover:text-primary"
+                  className="mr-9 text-lg text-[#636270] active:text-primary hover:text-primary"
                   onClick={closeDrawer}
                 >
                   Shop
                 </Link>
                 <Link
                   href="/singleproduct"
-                  className="mr-9 text-sm text-[#636270] active:text-primary hover:text-primary"
+                  className="mr-9 text-lg text-[#636270] active:text-primary hover:text-primary"
                   onClick={closeDrawer}
                 >
                   Product
                 </Link>
                 <Link
                   href="/contact"
-                  className="mr-9 text-sm text-[#636270] active:text-primary hover:text-primary"
+                  className="mr-9 text-lg text-[#636270] active:text-primary hover:text-primary"
                   onClick={closeDrawer}
                 >
                   Contact
@@ -120,14 +121,20 @@ const Header = () => {
 
                 <Link
                   href="/about"
-                  className="mr-9 text-sm text-[#636270] active:text-primary hover:text-primary"
+                  className="mr-9 text-lg text-[#636270] active:text-primary hover:text-primary"
                   onClick={closeDrawer}
                 >
                   About
                 </Link>
               </div>
+              <div className="items-center flex mt-5">
+            <p className="text-base font-medium text-gray-500">
+              Contact:<span className="ml-2 text-text">(808) 555-0111</span>
+            </p>
+          </div>
             </DrawerContent>
           </Drawer>
+          </div>
         </div>
       </div>
       {/* Bottom Section, Hidden on smaller devices */}

@@ -15,10 +15,10 @@ import category1 from "@/Public/category1.png";
 const Products = () => {
   return (
     <div
-      className={`${inter.className} xl:px-0 px-8 max-w-7xl m-auto pt-16 -mb-28`}
+      className={`${inter.className} max-w-7xl m-auto pt-16 -mb-28`}
     >
       <h2 className="heading xl:px-28 text-center">Our Products</h2>
-      <div className="flex flex-wrap justify-center px-6 items-center gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-[auto,auto] md:grid-cols-[auto,auto,auto] lg:grid-cols-[auto,auto,auto,auto] px-5 xl:px-20 gap-5">
         {/* Product Cards */}
         <ProductCard
           pImage={product1}
@@ -91,45 +91,45 @@ const Products = () => {
       {/* Bottom Call to Action */}
       <div className=" bg-secondary flex flex-col justify-center items-center py-20 mt-28">
         <h3
-          className={`${roboto.className} font-medium text-2xl xl:text-4xl text-center pb-16`}
+          className={`${roboto.className} font-medium text-2xl lg:text-4xl text-center pb-16`}
         >
           Or Subscribe To The Newsletter
         </h3>
-        <div className="font-medium text-grey pb-16 flex  gap-5">
-          <span className="border-b-2 border-black xl:min-w-[500px] w-full pb-2 flex">
+        <div className="font-medium justify-center text-grey pb-16 flex  gap-5">
+          <span className="border-b-2 border-black min-w-full lg:min-w-[500px] w-full pb-2 flex ">
             <p>Email Address...</p>
           </span>
           <span className="flex ml-5 pb-2 border-b-2 border-black">SUBMIT</span>
         </div>
 
         <h3
-          className={`${roboto.className} font-medium text-2xl xl:text-4xl  text-center pb-16`}
+          className={`${roboto.className} font-medium text-2xl lg:text-4xl  text-center pb-16`}
         >
           Follow Products And Discounts On Instagram
         </h3>
         {/* Product Gallery Images */}
-        <div className="flex flex-wrap xl:flex-nowrap xl:px-20 justify-center items-center gap-5">
-          <div className="group relative rounded-xl h-32 w-36 bg-slate-200 overflow-hidden">
+        <div className="grid grid-cols-1 sm:grid-cols-[auto,auto] md:grid-cols-[auto,auto,auto] lg:grid-cols-[repeat(6,auto)] px-20 md:px-5 gap-5">
+          <div className="group relative rounded-xl h-96 sm:h-32 sm:w-36 bg-slate-200 overflow-hidden">
             <Image src={category} alt="product" />
           </div>
 
-          <div className="group relative rounded-xl h-32 w-36 bg-slate-200 overflow-hidden">
+          <div className="group relative rounded-xl h-96 sm:h-32 sm:w-36 bg-slate-200 overflow-hidden">
             <Image src={product2} alt="product" />
           </div>
 
-          <div className="group relative rounded-xl h-32 w-36 bg-slate-200 overflow-hidden">
+          <div className="group relative rounded-xl h-96 sm:h-32 sm:w-36 bg-slate-200 overflow-hidden">
             <Image src={product3} alt="product" />
           </div>
 
-          <div className="group relative rounded-xl h-32 w-36 bg-slate-200 overflow-hidden">
+          <div className="group relative rounded-xl h-96 sm:h-32 sm:w-36 bg-slate-200 overflow-hidden">
             <Image src={product7} alt="product" />
           </div>
 
-          <div className="group relative rounded-xl h-32 w-36 bg-slate-200 overflow-hidden">
+          <div className="group relative rounded-xl h-96 sm:h-32 sm:w-36 bg-slate-200 overflow-hidden">
             <Image src={product6} alt="product" />
           </div>
 
-          <div className="group relative rounded-xl h-32 w-36 bg-slate-200 overflow-hidden">
+          <div className="group relative rounded-xl h-96 sm:h-32 sm:w-36 bg-slate-200 overflow-hidden">
             <Image src={category1} alt="product" />
           </div>
         </div>

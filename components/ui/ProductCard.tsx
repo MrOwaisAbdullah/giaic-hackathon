@@ -21,9 +21,9 @@ const ProductCard: React.FC<ProductCards> = ({
   isNew,
 }) => {
   return (
-    <div className={`${inter.className} relative flex flex-col cursor-pointer group min-w-72 items-center mt-5`}>
+    <div className={`${inter.className} relative flex flex-col cursor-pointer group md:max-w-full md:min-w-full mt-5`}>
       <div
-        className="cursor-pointer z-0 relative group min-h-56 max-h-96 md:max-w-64 md:max-h-56 bg-graybg rounded overflow-hidden"
+        className="cursor-pointer z-0 relative group min-h-56 xl:max-h-96 md:max-w-full bg-gray-200 rounded overflow-hidden"
       >
         
         <div
@@ -32,7 +32,7 @@ const ProductCard: React.FC<ProductCards> = ({
           }`}
         >
           {/* Dynamically add Product Image */}
-          <Image className="object-cover" src={pImage} alt={name} width={1000} height={1500}/>
+          <Image className="object-cover min-h-64 max-h-64" src={pImage} alt={name} width={500} height={1000}/>
 
           {/* dynamically add the New or Discount Tag if they provided */}
           <div
@@ -57,8 +57,8 @@ const ProductCard: React.FC<ProductCards> = ({
       </div>
       
       {/* Dynamically adding Product Name, new Prices and old price, if the old price is not provided dont show it  */}
-      <div className="relative flex items-center justify-between ">
-        <div className="flex flex-col mr-24 xs:mr-64 md:mr-20 p-0 justify-left text-left">
+      <div className="relative flex items-center justify-between mt-3">
+        <div className="flex flex-col p-0 justify-left text-left">
           <h2 className="group-hover:text-primary mb-1">{name}</h2>
           <div className="flex gap-1 -mt-1 flex-col">
             <p className="text-lg font-medium">{`$${newPrice}`}</p>
