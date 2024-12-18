@@ -9,7 +9,7 @@ import { SlTrophy } from "react-icons/sl";
 
 const Contact = () => {
   return (
-    <div className={`${poppins.className} pt-28 -mb-28 max-w-7xl m-auto`}>
+    <div className={`${poppins.className} pt-28 -mb-28 xl:px-0 px-8 max-w-7xl m-auto`}>
       <h2 className={`heading text-center font-semibold text-4xl`}>
         Get In Touch With Us
       </h2>

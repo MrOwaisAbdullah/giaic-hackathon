@@ -15,7 +15,7 @@ import category1 from "@/Public/category1.png";
 const Products = () => {
   return (
     <div
-      className={`${inter.className} xl:px-0 max-w-7xl m-auto pt-16 -mb-28`}
+      className={`${inter.className} xl:px-0 px-8 max-w-7xl m-auto pt-16 -mb-28`}
     >
       <h2 className="heading xl:px-28 text-center">Our Products</h2>
       <div className="flex flex-wrap justify-center px-6 items-center gap-5">
