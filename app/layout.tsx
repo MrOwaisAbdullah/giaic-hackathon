@@ -5,7 +5,7 @@ import Footer from "@/components/sections/Footer";
 
 
 export const metadata: Metadata = {
-  title: "Create Next App",
+  title: "Comforty Furniture Shop",
   description: "Created By Owais Abdullah",
 };
 

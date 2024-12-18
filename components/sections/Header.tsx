@@ -1,7 +1,7 @@
 "use client";
 import { inter } from "../../app/fonts";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import {
   Drawer,
   DrawerClose,
@@ -17,7 +17,7 @@ import { CiCircleAlert } from "react-icons/ci";
 
 const Header = () => {
   // State to manage the open/close status of the drawer
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   // Function to toggle the drawer's open/close state
   const toggleDrawer = () => setIsOpen((prev) => !prev);
