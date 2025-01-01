@@ -116,13 +116,6 @@ const Header = () => {
                   Shop
                 </Link>
                 <Link
-                  href="/singleproduct"
-                  className="mr-9 text-lg text-[#636270] active:text-primary hover:text-primary"
-                  onClick={closeDrawer}
-                >
-                  Product
-                </Link>
-                <Link
                   href="/contact"
                   className="mr-9 text-lg text-[#636270] active:text-primary hover:text-primary"
                   onClick={closeDrawer}
@@ -163,12 +156,6 @@ const Header = () => {
               className="mr-9 text-sm text-[#636270] active:text-primary hover:text-primary"
             >
               Shop
-            </Link>
-            <Link
-              href="/singleproduct"
-              className="mr-9 text-sm text-[#636270] active:text-primary hover:text-primary"
-            >
-              Product
             </Link>
             <Link
               href="/contact"
