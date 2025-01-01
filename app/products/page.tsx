@@ -18,6 +18,7 @@ const Products =async () => {
     featuredImage,
     title,
     oldPrice,
+    _id,
     slug,
     "isDiscounted": oldPrice > 0,
     "isNew": dateTime(createdAt) > dateTime(now()) - 7 * 24 * 60 * 60 * 1000,
