@@ -136,6 +136,15 @@ const Header = () => {
               Contact:<span className="ml-2 text-text">(808) 555-0111</span>
             </p>
           </div>
+          <Link href={"/cart"}>
+            <div className="group bg-white py-3 px-5 rounded-xl gap-3 xs:hidden flex items-center justify-center max-w-40 ">
+              <PiShoppingCart className="text-2xl group-hover:text-primary flex items-center justify-center" />
+              <p className="group-hover:text-primary">Cart</p>
+              <div className="rounded-full text-xs min-w-5 min-h-5 flex justify-center items-center text-center text-white bg-primary">
+                {cartCount}
+              </div>
+            </div>
+          </Link>
             </DrawerContent>
           </Drawer>
           </div>
