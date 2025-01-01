@@ -1,7 +1,7 @@
 "use client";
 import { inter } from "../../app/fonts";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import {
   Drawer,
   DrawerClose,
@@ -14,8 +14,19 @@ import { PiShoppingCart } from "react-icons/pi";
 import Image from "next/image";
 import logo from "../../Public/Logo Icon.png";
 import { CiCircleAlert } from "react-icons/ci";
+import { useCart } from "@/app/context/CartContext";
 
 const Header = () => {
+
+  const { state } = useCart(); // Access the cart state from context
+  const { cart } = state;
+
+  // Memoize cart count calculation
+  const cartCount = useMemo(
+    () => cart.reduce((total, item) => total + item.quantity, 0),
+    [cart]
+  );
+  
   // State to manage the open/close status of the drawer
   const [isOpen, setIsOpen] = useState(false);
 
@@ -28,7 +39,7 @@ const Header = () => {
     <header className={`${inter.className} overflow-hidden`}>
       {/* Upper Section */}
       <div className=" bg-accent">
-        <div className="max-w-7xl m-auto w-full flex flex-col md:flex-row gap-2 xl:px-0 pt-1 px-3 py-3 text-[#BEBDC7] items-center justify-between ">
+        <div className="max-w-7xl m-auto w-full flex flex-col md:flex-row gap-2 xl:px-0 px-3 py-2 text-[#BEBDC7] items-center justify-between ">
           <div>
             <p className="flex sm:flex-row flex-col xl:justify-center text-xs text-start">
               &#x2713; &nbsp; Free shipping on all orders over $50
@@ -61,13 +72,13 @@ const Header = () => {
             <Image src={logo} alt=""></Image>
             Comforty
           </Link>
-          <div className="flex gap-5">
+          <div className="flex gap-5 items-center justify-center">
           <Link href={"/cart"}>
-            <div className="bg-white py-3 px-5 rounded-xl gap-3 hidden xs:flex max-w-40 ">
-              <PiShoppingCart className="text-2xl flex" />
-              <p>Cart</p>
-              <div className="rounded-full w-5 h-5 flex justify-center items-center text-white bg-primary">
-                2
+            <div className="group bg-white py-3 px-5 rounded-xl gap-3 hidden xs:flex items-center justify-center max-w-40 ">
+              <PiShoppingCart className="text-2xl group-hover:text-primary flex items-center justify-center" />
+              <p className="group-hover:text-primary">Cart</p>
+              <div className="rounded-full text-xs min-w-5 min-h-5 flex justify-center items-center text-center text-white bg-primary">
+                {cartCount}
               </div>
             </div>
           </Link>

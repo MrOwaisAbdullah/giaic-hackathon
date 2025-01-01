@@ -10,7 +10,7 @@ export default function Home() {
     <div className="max-w-7xl m-auto overflow-hidden">
       <Hero />
       <Clients />
-      <FeatueredProducts />
+      <FeatueredProducts limit={4} />
       <Categories />
       <Gallery />
       <Products />

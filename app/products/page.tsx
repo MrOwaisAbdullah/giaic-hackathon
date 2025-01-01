@@ -2,91 +2,38 @@ import React from "react";
 import { inter, roboto } from "../fonts";
 import Image from "next/image";
 import ProductCard from "@/components/ui/ProductCard";
-import product1 from "@/Public/product1.png";
 import product2 from "@/Public/product2.png";
 import product3 from "@/Public/product3.png";
-import product4 from "@/Public/product4.png";
-import product5 from "@/Public/product5.png";
 import product6 from "@/Public/product6.png";
 import product7 from "@/Public/product7.png";
 import category from "@/Public/category.png";
 import category1 from "@/Public/category1.png";
+import { client } from "@/sanity/lib/client";
+import { ProductCards } from "@/typing";
 
-const Products = () => {
+const Products =async () => {
+
+  const query = `*[_type == "product"]{
+    price,
+    featuredImage,
+    title,
+    oldPrice,
+    slug,
+    "isDiscounted": oldPrice > 0,
+    "isNew": dateTime(createdAt) > dateTime(now()) - 7 * 24 * 60 * 60 * 1000,
+  }`
+  const products = await client.fetch(query);
+
   return (
     <div
       className={`${inter.className} max-w-7xl m-auto pt-16 -mb-28`}
     >
       <h2 className="heading xl:px-28 text-center">Our Products</h2>
       <div className="grid grid-cols-1 sm:grid-cols-[auto,auto] md:grid-cols-[auto,auto,auto] lg:grid-cols-[auto,auto,auto,auto] px-5 xl:px-20 gap-5">
-        {/* Product Cards */}
-        <ProductCard
-          pImage={product1}
-          newPrice={20}
-          name="Library Stool Chair"
-          isNew={true}
-        />
-        <ProductCard
-          pImage={product7}
-          newPrice={20}
-          name="Library Stool Chair"
-          isDiscount={true}
-        />
-        <ProductCard
-          pImage={product6}
-          newPrice={20}
-          name="Library Stool Chair"
-        />
-        <ProductCard
-          pImage={product5}
-          newPrice={20}
-          name="Library Stool Chair"
-        />
-        <ProductCard
-          pImage={category}
-          newPrice={20}
-          name="Library Stool Chair"
-          isNew={true}
-        />
-        <ProductCard
-          pImage={product3}
-          newPrice={20}
-          name="Library Stool Chair"
-          isDiscount={true}
-        />
-        <ProductCard
-          pImage={product2}
-          newPrice={20}
-          name="Library Stool Chair"
-        />
-        <ProductCard
-          pImage={product1}
-          newPrice={20}
-          name="Library Stool Chair"
-        />
-
-        <ProductCard
-          pImage={product4}
-          newPrice={20}
-          name="Library Stool Chair"
-          isNew={true}
-        />
-        <ProductCard
-          pImage={product7}
-          newPrice={20}
-          name="Library Stool Chair"
-          isDiscount={true}
-        />
-        <ProductCard
-          pImage={product6}
-          newPrice={20}
-          name="Library Stool Chair"
-        />
-        <ProductCard
-          pImage={product5}
-          newPrice={20}
-          name="Library Stool Chair"
-        />
+        {/* Map over products and pass each product to ProductCard */}
+        {products.map((product: ProductCards, index: number) => (
+          <ProductCard key={index} product={product} />
+        ))}
       </div>
       {/* Bottom Call to Action */}
       <div className=" bg-secondary flex flex-col justify-center items-center py-20 mt-28">
