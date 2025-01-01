@@ -20,9 +20,9 @@ const Products = async ({ limit }: ProductsSectionProps) => {
   const displayedProducts = limit ? products.slice(0, limit) : products;
 
   return (
-    <section className={`${inter.className} flex flex-col justify-center px-5 xl:px-0 mt-36`}>
+    <section className={`${inter.className} flex flex-col justify-center mt-36`}>
     <h2 className='heading text-center px-2 xl:px-0'>Our Products</h2>
-    <div className='grid grid-cols-1 sm:grid-cols-[auto,auto] md:grid-cols-[auto,auto,auto] lg:grid-cols-[auto,auto,auto,auto] px-10 gap-5 justify-content-center'>
+    <div className='grid grid-cols-1 sm:grid-cols-[auto,auto] md:grid-cols-[auto,auto,auto] lg:grid-cols-[auto,auto,auto,auto] gap-5 px-10 xl:px-0 justify-content-center'>
         {/* Map over products and pass each product to ProductCard */}
         {displayedProducts.map((product: ProductCards, index: number) => (
           <ProductCard key={index} product={product} />
