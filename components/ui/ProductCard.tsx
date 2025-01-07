@@ -33,9 +33,9 @@ const ProductCard = ({ product }: { product: ProductCards }) => {
   };
   return (
     <div
-      className={`${inter.className} relative flex flex-col cursor-pointer group md:max-w-full md:min-w-full mt-5`}
+      className={`${inter.className} relative flex flex-col cursor-pointer group mt-5`}
     >
-      <div className="cursor-pointer z-0 relative group md:max-w-full bg-gray-200 rounded overflow-hidden">
+      <div className="cursor-pointer z-0 relative group bg-gray-200 sm:max-h-64 rounded overflow-hidden">
         <div
           className={`${
             (product?.isDiscounted) || (product?.isNew)

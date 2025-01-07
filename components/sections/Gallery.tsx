@@ -30,7 +30,7 @@ const Gallery = () => {
         </div>
         </div>
       {/* four small images */}
-        <div className='grid grid-cols-1 sm:grid-cols-[auto,auto] gap-7 xl:max-h-[550px] w-full'>
+        <div className='grid grid-cols-1 sm:grid-cols-[auto,auto] gap-7 md:max-h-[400px] lg:max-h-[500px] xl:max-h-[550px] w-full'>
         <div
           className="group relative bg-slate-200 overflow-hidden">
              <Image src={product5} alt='Product'></Image>
