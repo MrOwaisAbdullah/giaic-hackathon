@@ -6,14 +6,14 @@ import { ProductCards, ProductsSectionProps } from '@/typing'
 
 const Products = async ({ limit }: ProductsSectionProps) => {
 
-  const query = `*[_type == "product"] {
+  const query = `*[_type == "products"] {
     price,
-    featuredImage,
+    image,
     title,
     slug,
     _id,
-    oldPrice,
-    "isDiscounted": oldPrice > 0,
+    priceWithoutDiscount,
+    "isDiscounted": priceWithoutDiscount > 0,
     "isNew": dateTime(createdAt) > dateTime(now()) - 7 * 24 * 60 * 60 * 1000,
   }`
   const products = await client.fetch(query);
@@ -27,7 +27,7 @@ const Products = async ({ limit }: ProductsSectionProps) => {
         {displayedProducts.map((product: ProductCards, index: number) => (
           <ProductCard key={index} product={product} />
         ))}
-
+        
     </div>
     </section>
 )

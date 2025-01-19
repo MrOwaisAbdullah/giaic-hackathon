@@ -1,55 +1,56 @@
-"use client"; 
+"use client";
 
 import { useCart } from "@/app/context/CartContext";
 import { PiShoppingCart } from "react-icons/pi";
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
-import { ProductCards } from "@/typing";
-import { Toast } from "@/components/ui/Toast";
-import { useCallback } from "react";
+import { Products } from "@/typing";
+import { useNotifications } from "@/app/context/NotificationContext"; // Import the notifications context
+import SocialSharing from "../ui/SocialSharing";
 
-const SingleProduct = ({ product }: { product: ProductCards }) => {
+const SingleProduct = ({ product }: { product: Products }) => {
   const { dispatch } = useCart();
   const [quantity, setQuantity] = useState(1);
-  const [showToast, setShowToast] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const productUrl = `${window.location.origin}/products/${product.slug?.current}`;
 
-   // Quantity change handler with useCallback
-   const handleQuantityChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+
+  // Use the notifications context
+  const { addNotification } = useNotifications();
+
+  // Quantity change handler
+  const handleQuantityChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(e.target.value);
     setQuantity(value < 1 ? 1 : value);
   }, []);
 
-  // Add to cart handler with useCallback
+  // Add to cart handler
   const handleAddToCart = useCallback(() => {
-    // Set loading state
     setIsLoading(true);
     try {
       dispatch({
         type: "ADD_TO_CART",
         product: {
           _id: product._id,
-          name: product.title,
+          title: product.title,
           price: product.price,
-          featuredImage: urlFor(product.featuredImage).url(),
+          image: urlFor(product.image).url(),
           quantity: quantity,
-          description: product.description,
         },
       });
 
-      setShowToast(true);
-      setQuantity(1);  // Reseting quantity after adding
-      setTimeout(() => setShowToast(false), 3000);
+      // Trigger a success notification
+      addNotification("Added to cart successfully!", "success");
+      setQuantity(1); // Reset quantity after adding
     } catch (error) {
-      setShowToast(true);
+      // Trigger an error notification
+      addNotification("Failed to add to cart. Please try again.", "error");
       console.error(error);
-      // You would want to add error handling Toast component
     } finally {
-      setIsLoading(false);  // End loading state
+      setIsLoading(false); // End loading state
     }
-  }, [dispatch, product, quantity]);
-
+  }, [dispatch, product, quantity, addNotification]);
 
   return (
     <div className="flex flex-wrap xl:flex-nowrap gap-36 justify-center text-center xl:justify-start xl:text-left">
@@ -57,11 +58,11 @@ const SingleProduct = ({ product }: { product: ProductCards }) => {
       <div className="">
         <Image
           className="rounded-xl xl:ml-14 xl:w-[800px] xl:h-[550px] object-cover"
-          src={urlFor(product.featuredImage).url()}
+          src={urlFor(product.image).url()}
           alt={product.title}
-          priority  
-          width={1000}
-          height={1000}
+          priority
+          width={2000}
+          height={2000}
         ></Image>
       </div>
       {/* Product Details */}
@@ -95,18 +96,14 @@ const SingleProduct = ({ product }: { product: ProductCards }) => {
           <PiShoppingCart className="text-2xl" />
           {isLoading ? 'Adding...' : 'Add to Cart'}
         </button>
+                    {/* Social Sharing Component */}
+                    <div className="mt-8">
+        <h3 className="text-lg font-semibold mb-4">Share this product:</h3>
+        <SocialSharing productUrl={productUrl} productTitle={product.title} />
       </div>
-      {showToast && (
-        <Toast
-          message="Added to cart successfully!"
-          type="success"
-          onClose={() => setShowToast(false)}
-        />
-      )}
+      </div>
     </div>
   );
 };
 
 export default SingleProduct;
-
-

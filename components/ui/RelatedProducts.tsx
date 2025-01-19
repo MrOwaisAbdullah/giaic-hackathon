@@ -11,7 +11,7 @@ const RelatedProducts = ({ product }: { product: ProductCards }) => {
       <Link href={`/product/${product.slug.current}`}>
         <Image
           className="object-cover min-h-56 md:max-h-56 hover:scale-110 duration-200 overflow-hidden"
-          src={urlFor(product.featuredImage).url()}
+          src={urlFor(product.image).url()}
           height={300}
           width={300}
           alt={product.title}

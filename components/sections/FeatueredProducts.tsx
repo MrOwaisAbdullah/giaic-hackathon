@@ -7,12 +7,12 @@ import {client} from '@/sanity/lib/client'
 
 const FeatueredProducts = async ({ limit }: ProductsSectionProps) => {
 
-  const query = `*[_type == "product" && isFeatured == true]{
+  const query = `*[_type == "products" && "featured" in tags]{
     price,
-    featuredImage,
+    image,
     slug,
     title,
-    "isDiscounted": oldPrice > 0,
+    "isDiscounted": priceWithoutDiscount > 0,
     "isNew": createdAt > now() - 30 * 24 * 60 * 60 * 1000,
   }`
   const products = await client.fetch(query);

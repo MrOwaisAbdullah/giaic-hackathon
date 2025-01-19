@@ -1,9 +1,7 @@
 import { client } from "@/sanity/lib/client";
 import { Products } from "@/typing";
-import { NextResponse } from "next/server";
 
-// Function to validate the cart using Sanity
-const validateCart = async (cart: Products[]): Promise<Products[]> => {
+export const validateCart = async (cart: Products[]): Promise<Products[]> => {
   try {
     // Extract product IDs from the cart
     const productIds = cart.map((item) => item._id);
@@ -37,22 +35,3 @@ const validateCart = async (cart: Products[]): Promise<Products[]> => {
     return cart; // Return the original cart if validation fails
   }
 };
-
-export async function POST(req: Request) {
-  try {
-    // Extract the cart from the request body
-    const { cart }: { cart: Products[] } = await req.json();
-
-    // Validate the cart using Sanity
-    const validatedCart = await validateCart(cart);
-
-    // Return the validated cart as a JSON response
-    return NextResponse.json(validatedCart);
-  } catch (error) {
-    console.error("Error processing request:", error);
-    return NextResponse.json(
-      { error: "Failed to process the cart" },
-      { status: 500 }
-    );
-  }
-}

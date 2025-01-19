@@ -1,13 +1,13 @@
 import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: "product",
-  title: "Product",
+  name: "products",
+  title: "Products",
   type: "document",
   fields: [
     defineField({
       name: "title",
-      title: "Title",
+      title: "Product Title",
       type: "string",
       validation: (Rule) => Rule.required().min(3).max(100),
     }),
@@ -19,7 +19,6 @@ export default defineType({
         source: "title",
         maxLength: 200,
       },
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "description",
@@ -34,8 +33,13 @@ export default defineType({
       validation: (Rule) => Rule.required().min(0),
     }),
     defineField({
-      name: "oldPrice",
-      title: "Old Price",
+      name: "badge",
+      title: "Badge",
+      type: "string",
+    }),
+    defineField({
+      title: "Price without Discount",
+      name: "priceWithoutDiscount",
       type: "number",
       validation: (Rule) =>
         Rule.custom((value, context) => {
@@ -55,7 +59,7 @@ export default defineType({
       hidden: true,
     }),
     defineField({
-      name: "featuredImage",
+      name: "image",
       title: "Featured Image",
       type: "image",
       options: {
@@ -71,20 +75,32 @@ export default defineType({
       validation: (Rule) => Rule.max(10), // Limit gallery to 10 images
     }),
     defineField({
-      name: "stock",
-      title: "Stock",
+      name: "category",
+      title: "Category",
+      type: "reference",
+      to: [{ type: "categories" }],
+    }),
+    defineField({
+      name: "inventory",
+      title: "Inventory Management",
       type: "number",
       validation: (Rule) => Rule.min(0),
     }),
     defineField({
-      name: "sku",
-      title: "SKU",
-      type: "string",
-    }),
-    defineField({
-      name: "isFeatured",
-      title: "Featured Product",
-      type: "boolean",
+      name: "tags",
+      title: "Tags",
+      type: "array",
+      of: [{ type: "string" }],
+      options: {
+        list: [
+          { title: "Featured", value: "featured" },
+          {
+            title: "Follow products and discounts on Instagram",
+            value: "instagram",
+          },
+          { title: "Gallery", value: "gallery" },
+        ],
+      },
     }),
     defineField({
       name: "isNew",
@@ -94,13 +110,20 @@ export default defineType({
       initialValue: true, // Assume products are new by default
       hidden: true, // Hide this field from manual edits
     }),
+    defineField({
+      name: "seller",
+      type: "reference",
+      to: [{ type: "seller" }],
+      title: "Seller",
+      description: "The seller/showroom offering this product.",
+    }),
   ],
   preview: {
     select: {
       title: "title",
       price: "price",
       oldPrice: "oldPrice",
-      media: "featuredImage",
+      media: "image",
     },
     prepare(selection: { title: string; price: number; oldPrice?: number }) {
       const { title, price, oldPrice } = selection;
