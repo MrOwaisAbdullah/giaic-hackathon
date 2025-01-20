@@ -106,6 +106,15 @@ const ProductsClientWrapper: React.FC<ProductsClientWrapperProps> = ({
     updateURL(updatedFilters, 1); // Reset to page 1 when filters change
   };
 
+    // If products are empty or not fetched, show "Products Not Found"
+    if (!products || products.length === 0) {
+      return (
+        <div className="flex justify-center items-center h-[50vh]">
+          <p className="text-2xl font-bold text-gray-500">Products Not Found!!!</p>
+        </div>
+      );
+    }
+
   return (
     <div className="grid grid-col-1 md:grid-col-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
       <div className="col-span-1 mt-2">

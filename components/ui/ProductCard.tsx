@@ -21,10 +21,10 @@ const ProductCard = ({ product }: { product: ProductCards }) => {
       dispatch({
         type: "ADD_TO_CART",
         product: {
-          _id: product._id, // Correct field
+          _id: product._id, 
           title: product.title,
           price: product.price,
-          image: urlFor(product.image).url(),
+          image: product.image ? urlFor(product.image).url() : null,
           quantity: 1, // Default quantity is 1
         },
       });
@@ -52,13 +52,19 @@ const ProductCard = ({ product }: { product: ProductCards }) => {
         >
           {/* Dynamically add Product Image */}
           <Link href={`/product/${product?.slug.current}`}>
-            <Image
-              className="object-cover hover:scale-110 duration-200 overflow-hidden min-h-64 md:max-h-64"
-              src={urlFor(product.image).url()}
-              alt={product?.title || "Product image"}
-              width={500}
-              height={1000}
-            />
+            {product.image ? (
+              <Image
+                className="object-cover hover:scale-110 duration-200 overflow-hidden min-h-64 md:max-h-64"
+                src={urlFor(product.image).url()}
+                alt={product?.title || "Product image"}
+                width={500}
+                height={1000}
+              />
+            ) : (
+              <div className="w-full h-64 bg-gray-200 flex items-center justify-center">
+                <p className="text-gray-500 text-center">No Image Available</p>
+              </div>
+            )}
           </Link>
           {/* dynamically add the New or Discount Tag if they are provided */}
           <div

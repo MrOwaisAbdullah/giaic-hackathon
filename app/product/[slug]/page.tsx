@@ -1,75 +1,70 @@
-import React from "react";
+"use client"; // Mark this as a client component
+import React, { useEffect, useState } from "react";
 import { inter } from "@/app/fonts";
 import { client } from "@/sanity/lib/client";
 import RelatedProducts from "@/components/ui/RelatedProducts";
 import { ProductCards } from "@/typing";
 import Link from "next/link";
 import SingleProduct from "@/components/sections/SingleProduct";
-import { Metadata } from "next";
-import { urlFor } from "@/sanity/lib/image";
 
-// Fetch product data
-const fetchProduct = async (slug: string) => {
-  const query = `*[_type == "products" && slug.current == "${slug}"]{
-    price,
-    image,
-    title,
-    slug,
-    _id,
-    description,
-    priceWithoutDiscount,
-    "isDiscounted": priceWithoutDiscount > 0,
-    "isNew": createdAt > now() - 30 * 24 * 60 * 60 * 1000,
-  }[0]`;
-  return await client.fetch(query);
-};
+const Page = ({ params: { slug } }: { params: { slug: string } }) => {
+  const [product, setProduct] = useState<ProductCards | null>(null);
+  const [relatedProducts, setRelatedProducts] = useState<ProductCards[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-// Generate metadata for the product page
-export const generateMetadata = async ({
-  params: { slug },
-}: {
-  params: { slug: string };
-}): Promise<Metadata> => {
-  const product = await fetchProduct(slug);
+  // Fetch product and related products
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
 
-  return {
-    title: product.title,
-    description: product.description,
-    openGraph: {
-      title: product.title,
-      description: product.description,
-      images: [
-        {
-          url: urlFor(product.image).url(), 
-          width: 1200,
-          height: 630,
-          alt: product.title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: product.title,
-      description: product.description,
-      images: [urlFor(product.image).url()],
-    },
-  };
-};
+        // Fetch the current product
+        const productQuery = `*[_type == "products" && slug.current == "${slug}"][0]{
+          price,
+          image,
+          title,
+          slug,
+          _id,
+          description,
+          priceWithoutDiscount,
+          "isDiscounted": priceWithoutDiscount > 0,
+          "isNew": createdAt > now() - 30 * 24 * 60 * 60 * 1000,
+          category->{title},
+          tags
+        }`;
+        const productData = await client.fetch(productQuery);
+        setProduct(productData);
 
-const Page = async ({ params: { slug } }: { params: { slug: string } }) => {
-  const product = await fetchProduct(slug);
+        // Fetch related products based on category and tags
+        if (productData) {
+          const relatedProductsQuery = `*[_type == "products" && _id != "${productData._id}" && (category->title == "${productData.category.title}" || tags[] match "${productData.tags.join(",")}")]{
+            price,
+            image,
+            title,
+            slug,
+            "isDiscounted": priceWithoutDiscount > 0,
+            "isNew": createdAt > now() - 30 * 24 * 60 * 60 * 1000,
+          }[0...5]`;
+          const relatedProductsData = await client.fetch(relatedProductsQuery);
+          setRelatedProducts(relatedProductsData);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-  // Query for Related Products
-  const relatedProductsQuery = `*[_type == "products"]{
-    price,
-    image,
-    title,
-    slug,
-    "isDiscounted": priceWithoutDiscount > 0,
-    "isNew": createdAt > now() - 30 * 24 * 60 * 60 * 1000,
-  }`;
-  const products = await client.fetch(relatedProductsQuery);
-  const displayedProducts = products.slice(0, 5);
+    fetchData();
+  }, [slug]);
+
+  if (isLoading) {
+    return <div className="text-center py-10">Loading Product...</div>;
+  }
+
+  if (!product) {
+    return <div className="text-center py-10">Product not found.</div>;
+  }
 
   return (
     <div className={`${inter.className} max-w-7xl m-auto xl:px-0 px-5 mt-24`}>
@@ -84,9 +79,9 @@ const Page = async ({ params: { slug } }: { params: { slug: string } }) => {
         </Link>
       </div>
 
-      {/* Featured Products */}
+      {/* Related Products */}
       <div className="grid grid-cols-1 sm:grid-cols-[auto,auto] md:grid-cols-[auto,auto,auto] lg:grid-cols-[auto,auto,auto,auto,auto] px-5 gap-5 mt-10">
-        {displayedProducts.map((product: ProductCards, index: number) => (
+        {relatedProducts.map((product: ProductCards, index: number) => (
           <RelatedProducts key={index} product={product} />
         ))}
       </div>

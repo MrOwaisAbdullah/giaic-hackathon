@@ -4,7 +4,20 @@ import { useCart } from "@/app/context/CartContext";
 import { useNotifications } from "@/app/context/NotificationContext";
 import StripePaymentForm from "@/components/ui/StripePaymentForm";
 import { createOrder } from "@/utils/createOrder";
-import { Order, ShippingDetails, Products } from "@/typing";
+import { Order, Products } from "@/typing";
+import { z } from "zod";
+
+// Zod schema for shipping details
+const shippingDetailsSchema = z.object({
+  name: z.string().min(1, "Full name is required"),
+  email: z.string().email("Invalid email address"),
+  address: z.string().min(1, "Address is required"),
+  city: z.string().min(1, "City is required"),
+  postalCode: z.string().min(1, "Postal code is required"),
+  country: z.string().min(1, "Country is required"),
+});
+
+type ShippingDetails = z.infer<typeof shippingDetailsSchema>;
 
 const Checkout = () => {
   const { validateCartBeforeCheckout, state, dispatch } = useCart();
@@ -18,15 +31,21 @@ const Checkout = () => {
     postalCode: "",
     country: "",
   });
+  const [errors, setErrors] = useState<Record<string, string>>({}); // Store validation errors
   const [isProcessing, setIsProcessing] = useState(false);
-  const [orderDetails, setOrderDetails] = useState<{ items: Products[]; total: number } | null>(null); // Store order details
+  const [orderDetails, setOrderDetails] = useState<{ items: Products[]; total: number } | null>(null);
 
   const totalItems = state.cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
   const totalPrice = state.cart.reduce((sum, item) => sum + item.price * (item.quantity || 1), 0);
 
   const handleShippingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     try {
+      // Validate the form inputs using Zod
+      shippingDetailsSchema.parse(shippingDetails);
+      setErrors({}); // Clear any previous errors
+
       setIsProcessing(true);
       const validatedCart = await validateCartBeforeCheckout();
       if (validatedCart.length === 0) {
@@ -35,8 +54,19 @@ const Checkout = () => {
       }
       setCurrentStep("payment");
     } catch (error) {
-      console.error("Error processing shipping details:", error);
-      addNotification("Failed to validate your cart. Please try again.", "error");
+      if (error instanceof z.ZodError) {
+        // Handle validation errors
+        const fieldErrors: Record<string, string> = {};
+        error.errors.forEach((err) => {
+          if (err.path) {
+            fieldErrors[err.path[0]] = err.message;
+          }
+        });
+        setErrors(fieldErrors);
+      } else {
+        console.error("Error processing shipping details:", error);
+        addNotification("Failed to validate your cart. Please try again.", "error");
+      }
     } finally {
       setIsProcessing(false);
     }
@@ -87,54 +117,66 @@ const Checkout = () => {
           <form onSubmit={handleShippingSubmit} className="space-y-4">
             <h2 className="text-2xl font-bold mb-6">Shipping Details</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <input
-                type="text"
-                placeholder="Full Name"
-                value={shippingDetails.name}
-                onChange={(e) => setShippingDetails({ ...shippingDetails, name: e.target.value })}
-                className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                required
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                value={shippingDetails.email}
-                onChange={(e) => setShippingDetails({ ...shippingDetails, email: e.target.value })}
-                className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                required
-              />
-              <input
-                type="text"
-                placeholder="Address"
-                value={shippingDetails.address}
-                onChange={(e) => setShippingDetails({ ...shippingDetails, address: e.target.value })}
-                className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                required
-              />
-              <input
-                type="text"
-                placeholder="City"
-                value={shippingDetails.city}
-                onChange={(e) => setShippingDetails({ ...shippingDetails, city: e.target.value })}
-                className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                required
-              />
-              <input
-                type="text"
-                placeholder="Postal Code"
-                value={shippingDetails.postalCode}
-                onChange={(e) => setShippingDetails({ ...shippingDetails, postalCode: e.target.value })}
-                className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                required
-              />
-              <input
-                type="text"
-                placeholder="Country"
-                value={shippingDetails.country}
-                onChange={(e) => setShippingDetails({ ...shippingDetails, country: e.target.value })}
-                className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                required
-              />
+              <div>
+                <input
+                  type="text"
+                  placeholder="Full Name"
+                  value={shippingDetails.name}
+                  onChange={(e) => setShippingDetails({ ...shippingDetails, name: e.target.value })}
+                  className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+                {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+              </div>
+              <div>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  value={shippingDetails.email}
+                  onChange={(e) => setShippingDetails({ ...shippingDetails, email: e.target.value })}
+                  className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+                {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+              </div>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Address"
+                  value={shippingDetails.address}
+                  onChange={(e) => setShippingDetails({ ...shippingDetails, address: e.target.value })}
+                  className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+                {errors.address && <p className="text-red-500 text-sm mt-1">{errors.address}</p>}
+              </div>
+              <div>
+                <input
+                  type="text"
+                  placeholder="City"
+                  value={shippingDetails.city}
+                  onChange={(e) => setShippingDetails({ ...shippingDetails, city: e.target.value })}
+                  className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+                {errors.city && <p className="text-red-500 text-sm mt-1">{errors.city}</p>}
+              </div>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Postal Code"
+                  value={shippingDetails.postalCode}
+                  onChange={(e) => setShippingDetails({ ...shippingDetails, postalCode: e.target.value })}
+                  className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+                {errors.postalCode && <p className="text-red-500 text-sm mt-1">{errors.postalCode}</p>}
+              </div>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Country"
+                  value={shippingDetails.country}
+                  onChange={(e) => setShippingDetails({ ...shippingDetails, country: e.target.value })}
+                  className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+                {errors.country && <p className="text-red-500 text-sm mt-1">{errors.country}</p>}
+              </div>
             </div>
             <button
               type="submit"

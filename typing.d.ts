@@ -6,7 +6,7 @@ interface Products {
   title: string;
   price: number;
   priceWithoutDiscount?: number;
-  image: SanityImageSource;
+  image: SanityImageSource | null;
   description?: string;
   slug?: {
     current: string | null;
@@ -19,7 +19,7 @@ interface ProductCards {
   title: string;
   price: number;
   priceWithoutDiscount?: number;
-  image: SanityImageSource;
+  image: SanityImageSource | null;
   isDiscounted: boolean;
   isNew: boolean;
   slug: {
@@ -42,7 +42,7 @@ interface Product {
   price: number;
   priceWithoutDiscount?: number;
   quantity?: number;
-  image: SanityImageSource;
+  image: SanityImageSource | null;
   description?: string; 
 }
 

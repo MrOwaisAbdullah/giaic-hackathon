@@ -16,7 +16,6 @@ const Products = async () => {
   const categories = await getCategories();
   const products = await getProducts(); 
   const sellers = await getSellers();
-
   return (
     <div className={`${inter.className} max-w-7xl m-auto pt-16 -mb-28`}>
       <h2 className="heading xl:px-28 text-center">Our Products</h2>

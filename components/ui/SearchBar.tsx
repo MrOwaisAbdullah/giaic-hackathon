@@ -1,7 +1,14 @@
 "use client";
-
-import React from "react";
+import React, { useState } from "react";
 import { Search } from "lucide-react";
+import { z } from "zod";
+
+// Zod schema for search query
+const searchQuerySchema = z
+  .string()
+  .min(1, "Search query cannot be empty")
+  .max(50, "Search query cannot exceed 50 characters")
+  .regex(/^[a-zA-Z0-9\s]*$/, "Search query can only contain letters, numbers, and spaces");
 
 interface SearchBarProps {
   value: string;
@@ -9,9 +16,22 @@ interface SearchBarProps {
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ value, onSearch }) => {
+  const [error, setError] = useState<string | null>(null); // Store validation error
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSearch(value);
+
+    try {
+      // Validate the search query using Zod
+      searchQuerySchema.parse(value);
+      setError(null); // Clear any previous error
+      onSearch(value); // Trigger the search
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        // Handle validation errors
+        setError(error.errors[0].message);
+      }
+    }
   };
 
   return (
@@ -19,7 +39,10 @@ const SearchBar: React.FC<SearchBarProps> = ({ value, onSearch }) => {
       <input
         type="text"
         value={value}
-        onChange={(e) => onSearch(e.target.value)}
+        onChange={(e) => {
+          onSearch(e.target.value); // Update the search query
+          setError(null); // Clear error when the user types
+        }}
         placeholder="Search products..."
         className="w-full p-2 pr-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
       />
@@ -30,6 +53,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ value, onSearch }) => {
       >
         <Search size={20} />
       </button>
+      {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
     </form>
   );
 };
