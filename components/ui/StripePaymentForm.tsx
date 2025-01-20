@@ -1,9 +1,9 @@
 "use client";
-import { Payments } from "@/typing";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
-const StripePaymentForm = ({ onSuccess, isProcessing }: { onSuccess: (paymentDetails: Payments) => void; isProcessing: boolean }) => {
+const StripePaymentForm = ({ onSuccess, isProcessing }: { onSuccess: () => void; isProcessing: boolean }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [error, setError] = useState<string | null>(null);
@@ -13,7 +13,8 @@ const StripePaymentForm = ({ onSuccess, isProcessing }: { onSuccess: (paymentDet
     if (!stripe || !elements) return;
 
     try {
-      const { error } = await stripe.createPaymentMethod({
+      // Create a payment method using Stripe
+      const { error, paymentMethod } = await stripe.createPaymentMethod({
         type: "card",
         card: elements.getElement(CardElement)!,
       });
@@ -23,15 +24,12 @@ const StripePaymentForm = ({ onSuccess, isProcessing }: { onSuccess: (paymentDet
         return;
       }
 
-      const paymentDetails: Payments = {
-        cardNumber: "4242 4242 4242 4242",
-        expiryDate: "12/25",
-        cvv: "123",
-      };
-
-      onSuccess(paymentDetails);
+      // Simulate a successful payment
+      console.log("Payment Method:", paymentMethod);
+      toast.success("Payment successful!");
+      onSuccess(); // Move to the next step
     } catch (err) {
-      console.log(err);
+      console.error("Payment processing error:", err);
       setError("An error occurred during payment. Please try again.");
     }
   };

@@ -4,8 +4,7 @@ import { useCart } from "@/app/context/CartContext";
 import { toast } from "react-toastify";
 import StripePaymentForm from "@/components/ui/StripePaymentForm";
 import { createOrder } from "@/utils/createOrder";
-import { processPayment } from "@/utils/processPayment";
-import { Order, PaymentResult, Payments, ShippingDetails } from "@/typing";
+import { Order, ShippingDetails } from "@/typing";
 
 const Checkout = () => {
   const { validateCartBeforeCheckout, state, dispatch } = useCart();
@@ -41,30 +40,33 @@ const Checkout = () => {
     }
   };
 
-  const handlePayment = async (paymentDetails: Payments) => {
+  const handlePaymentSuccess = async () => {
     try {
       setIsProcessing(true);
+
+      // Create order in your database
       const order: Order = await createOrder({
         cart: state.cart,
         shipping: shippingDetails,
-        payment: paymentDetails,
-      });
-      const paymentResult: PaymentResult = await processPayment({
-        orderId: order.id,
-        amount: totalPrice,
-        paymentDetails,
+        payment: {
+          cardNumber: "4242 4242 4242 4242", // Mock payment details
+          expiryDate: "12/25",
+          cvv: "123",
+        },
       });
 
-      if (paymentResult.success) {
-        dispatch({ type: "CLEAR_CART" });
-        setCurrentStep("confirmation");
-        toast.success("Payment successful! Your order has been placed.");
-      } else {
-        toast.error("Payment failed. Please try again.");
-      }
+      // Log the created order
+      console.log("Order created:", order);
+
+      // Clear cart after successful payment
+      dispatch({ type: "CLEAR_CART" });
+
+      // Move to confirmation
+      setCurrentStep("confirmation");
+      toast.success("Payment successful! Your order has been placed.");
     } catch (error) {
-      console.error("Payment processing error:", error);
-      toast.error("An error occurred during payment. Please try again.");
+      console.error("Order creation error:", error);
+      toast.error("An error occurred while creating your order. Please try again.");
     } finally {
       setIsProcessing(false);
     }
@@ -140,7 +142,7 @@ const Checkout = () => {
         return (
           <div>
             <h2 className="text-2xl font-bold mb-6">Payment Information</h2>
-            <StripePaymentForm onSuccess={handlePayment} isProcessing={isProcessing} />
+            <StripePaymentForm onSuccess={handlePaymentSuccess} isProcessing={isProcessing} />
           </div>
         );
 
