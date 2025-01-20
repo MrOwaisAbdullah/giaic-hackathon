@@ -4,7 +4,7 @@ import { useCart } from "@/app/context/CartContext";
 import { useNotifications } from "@/app/context/NotificationContext";
 import StripePaymentForm from "@/components/ui/StripePaymentForm";
 import { createOrder } from "@/utils/createOrder";
-import { Order, ShippingDetails, ProductCards } from "@/typing";
+import { Order, ShippingDetails, Products } from "@/typing";
 
 const Checkout = () => {
   const { validateCartBeforeCheckout, state, dispatch } = useCart();
@@ -19,7 +19,7 @@ const Checkout = () => {
     country: "",
   });
   const [isProcessing, setIsProcessing] = useState(false);
-  const [orderDetails, setOrderDetails] = useState<{ items: ProductCards[]; total: number } | null>(null); // Store order details
+  const [orderDetails, setOrderDetails] = useState<{ items: Products[]; total: number } | null>(null); // Store order details
 
   const totalItems = state.cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
   const totalPrice = state.cart.reduce((sum, item) => sum + item.price * (item.quantity || 1), 0);
@@ -30,13 +30,13 @@ const Checkout = () => {
       setIsProcessing(true);
       const validatedCart = await validateCartBeforeCheckout();
       if (validatedCart.length === 0) {
-        addNotification({ message: "Your cart is empty or invalid. Please add items to proceed.", type: "error" });
+        addNotification("Your cart is empty or invalid. Please add items to proceed.", "error" );
         return;
       }
       setCurrentStep("payment");
     } catch (error) {
       console.error("Error processing shipping details:", error);
-      addNotification({ message: "Failed to validate your cart. Please try again.", type: "error" });
+      addNotification("Failed to validate your cart. Please try again.","error" );
     } finally {
       setIsProcessing(false);
     }
@@ -71,10 +71,10 @@ const Checkout = () => {
 
       // Move to confirmation
       setCurrentStep("confirmation");
-      addNotification({ message: "Payment successful! Your order has been placed.", type: "success" });
+      addNotification("Payment successful! Your order has been placed.", "success" );
     } catch (error) {
       console.error("Order creation error:", error);
-      addNotification({ message: "An error occurred while creating your order. Please try again.", type: "error" });
+      addNotification("An error occurred while creating your order. Please try again.","error" );
     } finally {
       setIsProcessing(false);
     }
