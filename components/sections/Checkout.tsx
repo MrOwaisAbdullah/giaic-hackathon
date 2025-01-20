@@ -1,14 +1,14 @@
 "use client";
 import React, { useState } from "react";
 import { useCart } from "@/app/context/CartContext";
-import { useNotifications } from "@/app/context/NotificationContext"; // Use your custom notification system
+import { useNotifications } from "@/app/context/NotificationContext";
 import StripePaymentForm from "@/components/ui/StripePaymentForm";
 import { createOrder } from "@/utils/createOrder";
-import { Order, ShippingDetails } from "@/typing";
+import { Order, ShippingDetails, Products } from "@/typing";
 
 const Checkout = () => {
   const { validateCartBeforeCheckout, state, dispatch } = useCart();
-  const { addNotification } = useNotifications(); // Use your custom notification system
+  const { addNotification } = useNotifications();
   const [currentStep, setCurrentStep] = useState<"details" | "payment" | "confirmation">("details");
   const [shippingDetails, setShippingDetails] = useState<ShippingDetails>({
     name: "",
@@ -19,6 +19,7 @@ const Checkout = () => {
     country: "",
   });
   const [isProcessing, setIsProcessing] = useState(false);
+  const [orderDetails, setOrderDetails] = useState<{ items: Products[]; total: number } | null>(null); // Store order details
 
   const totalItems = state.cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
   const totalPrice = state.cart.reduce((sum, item) => sum + item.price * (item.quantity || 1), 0);
@@ -29,7 +30,7 @@ const Checkout = () => {
       setIsProcessing(true);
       const validatedCart = await validateCartBeforeCheckout();
       if (validatedCart.length === 0) {
-        addNotification("Your cart is empty or invalid. Please add items to proceed.","error" );
+        addNotification( "Your cart is empty or invalid. Please add items to proceed.", "error" );
         return;
       }
       setCurrentStep("payment");
@@ -44,6 +45,12 @@ const Checkout = () => {
   const handlePaymentSuccess = async () => {
     try {
       setIsProcessing(true);
+
+      // Preserve order details before clearing the cart
+      setOrderDetails({
+        items: state.cart, // Store the cart items
+        total: totalPrice, // Store the total price
+      });
 
       // Create a mock order
       const order: Order = await createOrder({
@@ -64,10 +71,10 @@ const Checkout = () => {
 
       // Move to confirmation
       setCurrentStep("confirmation");
-      addNotification("Payment successful! Your order has been placed.","success" );
+      addNotification("Payment successful! Your order has been placed.",  "success" );
     } catch (error) {
       console.error("Order creation error:", error);
-      addNotification("An error occurred while creating your order. Please try again.", "error" );
+      addNotification("An error occurred while creating your order. Please try again.", "error");
     } finally {
       setIsProcessing(false);
     }
@@ -155,8 +162,8 @@ const Checkout = () => {
             <div className="mt-6 p-6 bg-gray-50 rounded-lg">
               <h3 className="text-xl font-semibold mb-4">Order Summary</h3>
               <div className="space-y-2">
-                <p><span className="font-medium">Items:</span> {totalItems}</p>
-                <p><span className="font-medium">Total:</span> ${totalPrice.toFixed(2)}</p>
+                <p><span className="font-medium">Items:</span> {orderDetails?.items.length || 0}</p>
+                <p><span className="font-medium">Total:</span> ${orderDetails?.total.toFixed(2) || "0.00"}</p>
               </div>
             </div>
             <button
