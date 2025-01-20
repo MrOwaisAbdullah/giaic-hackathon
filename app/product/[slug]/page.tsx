@@ -76,7 +76,7 @@ const Page = async ({ params: { slug } }: { params: { slug: string } }) => {
       <SingleProduct product={product} />
 
       <div className="flex justify-between mx-5 mt-24">
-        <h2 className="text-2xl uppercase font-bold">Featured Products</h2>
+        <h2 className="text-2xl uppercase font-bold">Related Products</h2>
         <Link href={"/products"}>
           <p className="text-lg font-bold underline underline-offset-4">
             View All

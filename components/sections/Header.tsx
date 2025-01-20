@@ -23,7 +23,7 @@ const Header = () => {
 
   // Memoize cart count calculation
   const cartCount = useMemo(
-    () => cart.reduce((total, item) => total + item.quantity, 0),
+    () => cart.reduce((total, item) => total + (item.quantity || 0), 0),
     [cart]
   );
   
