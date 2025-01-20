@@ -13,21 +13,11 @@ const StripePaymentForm = ({ onSuccess, isProcessing }: { onSuccess: () => void;
     if (!stripe || !elements) return;
 
     try {
-      // Create a payment method using Stripe
-      const { error, paymentMethod } = await stripe.createPaymentMethod({
-        type: "card",
-        card: elements.getElement(CardElement)!,
-      });
-
-      if (error) {
-        setError(error.message || "Payment failed");
-        return;
-      }
-
-      // Simulate a successful payment
-      console.log("Payment Method:", paymentMethod);
-      toast.success("Payment successful!");
-      onSuccess(); // Move to the next step
+      // Simulate a payment process (mock implementation)
+      setTimeout(() => {
+        toast.success("Payment successful!");
+        onSuccess(); // Move to the next step
+      }, 2000); // Simulate a 2-second delay
     } catch (err) {
       console.error("Payment processing error:", err);
       setError("An error occurred during payment. Please try again.");

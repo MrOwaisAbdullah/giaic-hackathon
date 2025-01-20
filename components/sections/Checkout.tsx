@@ -44,7 +44,7 @@ const Checkout = () => {
     try {
       setIsProcessing(true);
 
-      // Create order in your database
+      // Create a mock order
       const order: Order = await createOrder({
         cart: state.cart,
         shipping: shippingDetails,
