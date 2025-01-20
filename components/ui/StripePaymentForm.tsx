@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Payments } from "@/typing";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useState } from "react";
@@ -23,14 +23,12 @@ const StripePaymentForm = ({ onSuccess, isProcessing }: { onSuccess: (paymentDet
         return;
       }
 
-      // Mock payment details (replace with actual data from paymentMethod)
       const paymentDetails: Payments = {
-        cardNumber: "4242 4242 4242 4242", // Replace with actual card number
-        expiryDate: "12/25", // Replace with actual expiry date
-        cvv: "123", // Replace with actual CVV
+        cardNumber: "4242 4242 4242 4242",
+        expiryDate: "12/25",
+        cvv: "123",
       };
 
-      // Pass payment details to the parent component
       onSuccess(paymentDetails);
     } catch (err) {
       console.log(err);
@@ -40,12 +38,28 @@ const StripePaymentForm = ({ onSuccess, isProcessing }: { onSuccess: (paymentDet
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <CardElement className="p-2 border rounded" />
-      {error && <p className="text-red-500">{error}</p>}
+      <CardElement
+        options={{
+          style: {
+            base: {
+              fontSize: "16px",
+              color: "#424770",
+              "::placeholder": {
+                color: "#aab7c4",
+              },
+            },
+            invalid: {
+              color: "#9e2146",
+            },
+          },
+        }}
+        className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+      />
+      {error && <p className="text-red-500 text-sm">{error}</p>}
       <button
         type="submit"
         disabled={!stripe || isProcessing}
-        className="w-full bg-primary text-white py-2 rounded hover:bg-accent disabled:opacity-50"
+        className="w-full bg-primary text-white py-3 rounded-lg hover:bg-accent transition-colors disabled:opacity-50"
       >
         {isProcessing ? "Processing Payment..." : "Complete Purchase"}
       </button>
