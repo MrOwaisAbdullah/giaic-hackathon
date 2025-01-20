@@ -1,13 +1,14 @@
 "use client";
 import React, { useState } from "react";
 import { useCart } from "@/app/context/CartContext";
-import { toast } from "react-toastify";
+import { useNotifications } from "@/app/context/NotificationContext"; // Use your custom notification system
 import StripePaymentForm from "@/components/ui/StripePaymentForm";
 import { createOrder } from "@/utils/createOrder";
 import { Order, ShippingDetails } from "@/typing";
 
 const Checkout = () => {
   const { validateCartBeforeCheckout, state, dispatch } = useCart();
+  const { addNotification } = useNotifications(); // Use your custom notification system
   const [currentStep, setCurrentStep] = useState<"details" | "payment" | "confirmation">("details");
   const [shippingDetails, setShippingDetails] = useState<ShippingDetails>({
     name: "",
@@ -28,13 +29,13 @@ const Checkout = () => {
       setIsProcessing(true);
       const validatedCart = await validateCartBeforeCheckout();
       if (validatedCart.length === 0) {
-        toast.error("Your cart is empty or invalid. Please add items to proceed.");
+        addNotification("Your cart is empty or invalid. Please add items to proceed.","error" );
         return;
       }
       setCurrentStep("payment");
     } catch (error) {
       console.error("Error processing shipping details:", error);
-      toast.error("Failed to validate your cart. Please try again.");
+      addNotification("Failed to validate your cart. Please try again.","error" );
     } finally {
       setIsProcessing(false);
     }
@@ -63,10 +64,10 @@ const Checkout = () => {
 
       // Move to confirmation
       setCurrentStep("confirmation");
-      toast.success("Payment successful! Your order has been placed.");
+      addNotification("Payment successful! Your order has been placed.","success" );
     } catch (error) {
       console.error("Order creation error:", error);
-      toast.error("An error occurred while creating your order. Please try again.");
+      addNotification("An error occurred while creating your order. Please try again.", "error" );
     } finally {
       setIsProcessing(false);
     }
