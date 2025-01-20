@@ -30,13 +30,13 @@ const Checkout = () => {
       setIsProcessing(true);
       const validatedCart = await validateCartBeforeCheckout();
       if (validatedCart.length === 0) {
-        addNotification("Your cart is empty or invalid. Please add items to proceed.", "error" );
+        addNotification("Your cart is empty or invalid. Please add items to proceed.", "error");
         return;
       }
       setCurrentStep("payment");
     } catch (error) {
       console.error("Error processing shipping details:", error);
-      addNotification("Failed to validate your cart. Please try again.","error" );
+      addNotification("Failed to validate your cart. Please try again.", "error");
     } finally {
       setIsProcessing(false);
     }
@@ -71,10 +71,10 @@ const Checkout = () => {
 
       // Move to confirmation
       setCurrentStep("confirmation");
-      addNotification("Payment successful! Your order has been placed.", "success" );
+      addNotification("Payment successful! Your order has been placed.", "success");
     } catch (error) {
       console.error("Order creation error:", error);
-      addNotification("An error occurred while creating your order. Please try again.","error" );
+      addNotification("An error occurred while creating your order. Please try again.", "error");
     } finally {
       setIsProcessing(false);
     }
@@ -193,20 +193,22 @@ const Checkout = () => {
         </div>
       </div>
 
-      {/* Fixed Order Summary */}
-      <div className="mb-8 p-6 bg-gray-50 rounded-lg">
-        <h3 className="text-xl font-semibold mb-4">Order Summary</h3>
-        <div className="space-y-2">
-          <p>
-            <span className="font-medium">Items:</span>{" "}
-            {orderDetails ? orderDetails.items.length : totalItems}
-          </p>
-          <p>
-            <span className="font-medium">Total:</span> $
-            {orderDetails ? orderDetails.total.toFixed(2) : totalPrice.toFixed(2)}
-          </p>
+      {/* Fixed Order Summary (Visible only during shipping and payment steps) */}
+      {currentStep !== "confirmation" && (
+        <div className="mb-8 p-6 bg-gray-50 rounded-lg">
+          <h3 className="text-xl font-semibold mb-4">Order Summary</h3>
+          <div className="space-y-2">
+            <p>
+              <span className="font-medium">Items:</span>{" "}
+              {orderDetails ? orderDetails.items.length : totalItems}
+            </p>
+            <p>
+              <span className="font-medium">Total:</span> $
+              {orderDetails ? orderDetails.total.toFixed(2) : totalPrice.toFixed(2)}
+            </p>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Render Current Step */}
       {renderCheckoutStep()}
