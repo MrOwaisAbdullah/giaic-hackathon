@@ -1,5 +1,5 @@
 // app/products/page.tsx
-import React from "react";
+import React, { Suspense } from "react"; // Import Suspense
 import { inter, roboto } from "../fonts";
 import Image from "next/image";
 import product2 from "@/Public/product2.png";
@@ -14,19 +14,21 @@ import ProductsClientWrapper from "@/components/sections/ProductsWrapper";
 const Products = async () => {
   // Fetch all products, categories, and sellers
   const categories = await getCategories();
-  const products = await getProducts(); // Fetch all products
+  const products = await getProducts(); 
   const sellers = await getSellers();
 
   return (
     <div className={`${inter.className} max-w-7xl m-auto pt-16 -mb-28`}>
       <h2 className="heading xl:px-28 text-center">Our Products</h2>
-      {/* Pass all products to the ProductsClientWrapper */}
+      {/* Wrap ProductsClientWrapper in Suspense */}
       <div className="mx-3">
-      <ProductsClientWrapper
-        sellers={sellers}
-        categories={categories}
-        products={products}
-      />
+        <Suspense fallback={<div>Loading products...</div>}>
+          <ProductsClientWrapper
+            sellers={sellers}
+            categories={categories}
+            products={products}
+          />
+        </Suspense>
       </div>
       {/* Bottom Call to Action */}
       <div className="bg-secondary flex flex-col justify-center items-center py-20 mt-28">
