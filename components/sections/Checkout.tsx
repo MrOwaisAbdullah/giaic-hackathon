@@ -4,7 +4,7 @@ import { useCart } from "@/app/context/CartContext";
 import { useNotifications } from "@/app/context/NotificationContext";
 import StripePaymentForm from "@/components/ui/StripePaymentForm";
 import { createOrder } from "@/utils/createOrder";
-import { Order, ShippingDetails, Products } from "@/typing";
+import { Order, ShippingDetails, ProductCards } from "@/typing";
 
 const Checkout = () => {
   const { validateCartBeforeCheckout, state, dispatch } = useCart();
@@ -19,7 +19,7 @@ const Checkout = () => {
     country: "",
   });
   const [isProcessing, setIsProcessing] = useState(false);
-  const [orderDetails, setOrderDetails] = useState<{ items: Products[]; total: number } | null>(null); // Store order details
+  const [orderDetails, setOrderDetails] = useState<{ items: ProductCards[]; total: number } | null>(null); // Store order details
 
   const totalItems = state.cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
   const totalPrice = state.cart.reduce((sum, item) => sum + item.price * (item.quantity || 1), 0);
@@ -30,13 +30,13 @@ const Checkout = () => {
       setIsProcessing(true);
       const validatedCart = await validateCartBeforeCheckout();
       if (validatedCart.length === 0) {
-        addNotification( "Your cart is empty or invalid. Please add items to proceed.", "error" );
+        addNotification({ message: "Your cart is empty or invalid. Please add items to proceed.", type: "error" });
         return;
       }
       setCurrentStep("payment");
     } catch (error) {
       console.error("Error processing shipping details:", error);
-      addNotification("Failed to validate your cart. Please try again.","error" );
+      addNotification({ message: "Failed to validate your cart. Please try again.", type: "error" });
     } finally {
       setIsProcessing(false);
     }
@@ -71,10 +71,10 @@ const Checkout = () => {
 
       // Move to confirmation
       setCurrentStep("confirmation");
-      addNotification("Payment successful! Your order has been placed.",  "success" );
+      addNotification({ message: "Payment successful! Your order has been placed.", type: "success" });
     } catch (error) {
       console.error("Order creation error:", error);
-      addNotification("An error occurred while creating your order. Please try again.", "error");
+      addNotification({ message: "An error occurred while creating your order. Please try again.", type: "error" });
     } finally {
       setIsProcessing(false);
     }
@@ -193,12 +193,18 @@ const Checkout = () => {
         </div>
       </div>
 
-      {/* Order Summary */}
+      {/* Fixed Order Summary */}
       <div className="mb-8 p-6 bg-gray-50 rounded-lg">
         <h3 className="text-xl font-semibold mb-4">Order Summary</h3>
         <div className="space-y-2">
-          <p><span className="font-medium">Items:</span> {totalItems}</p>
-          <p><span className="font-medium">Total:</span> ${totalPrice.toFixed(2)}</p>
+          <p>
+            <span className="font-medium">Items:</span>{" "}
+            {orderDetails ? orderDetails.items.length : totalItems}
+          </p>
+          <p>
+            <span className="font-medium">Total:</span> $
+            {orderDetails ? orderDetails.total.toFixed(2) : totalPrice.toFixed(2)}
+          </p>
         </div>
       </div>
 
