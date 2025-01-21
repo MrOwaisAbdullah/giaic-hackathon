@@ -3,10 +3,8 @@ import "./globals.css";
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
 import { CartProvider } from "./context/CartContext";
-import StripeWrapper from "@/components/sections/StripeWrapper";
 import { NotificationsProvider } from "./context/NotificationContext";
 import { ToastContainer } from "@/components/ui/Toast";
-
 
 export const metadata: Metadata = {
   title: "Comforty Furniture Shop",
@@ -21,17 +19,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-      <CartProvider>
-      <NotificationsProvider>
-        <Header />
-        <StripeWrapper>
-        {children}
-        <ToastContainer />
-        </StripeWrapper>
-        <Footer />
-        </NotificationsProvider>
+        <CartProvider>
+          <NotificationsProvider>
+            <Header />
+            {children}
+            <ToastContainer />
+            <Footer />
+          </NotificationsProvider>
         </CartProvider>
-
       </body>
     </html>
   );

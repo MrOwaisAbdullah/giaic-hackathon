@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useCart } from "@/app/context/CartContext";
 import { useNotifications } from "@/app/context/NotificationContext";
-import StripePaymentForm from "@/components/ui/StripePaymentForm";
+import PaymentForm from "@/components/ui/PaymentForm"; // Updated import
 import { createOrder } from "@/utils/createOrder";
 import { Order, Products } from "@/typing";
 import { z } from "zod";
@@ -192,7 +192,7 @@ const Checkout = () => {
         return (
           <div>
             <h2 className="text-2xl font-bold mb-6">Payment Information</h2>
-            <StripePaymentForm onSuccess={handlePaymentSuccess} isProcessing={isProcessing} />
+            <PaymentForm onSuccess={handlePaymentSuccess} isProcessing={isProcessing} />
           </div>
         );
 
@@ -209,7 +209,7 @@ const Checkout = () => {
               </div>
             </div>
             <button
-              onClick={() => window.location.href = "/"}
+              onClick={() => (window.location.href = "/")}
               className="w-full bg-primary text-white py-3 rounded-lg hover:bg-accent transition-colors"
             >
               Continue Shopping

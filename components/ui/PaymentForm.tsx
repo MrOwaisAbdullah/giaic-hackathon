@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useNotifications } from "@/app/context/NotificationContext";
 
-const StripePaymentForm = ({ onSuccess, isProcessing }: { onSuccess: () => void; isProcessing: boolean }) => {
+const PaymentForm = ({ onSuccess, isProcessing }: { onSuccess: () => void; isProcessing: boolean }) => {
   const [error, setError] = useState<string | null>(null);
   const { addNotification } = useNotifications(); // Use your custom notification system
 
@@ -12,13 +12,13 @@ const StripePaymentForm = ({ onSuccess, isProcessing }: { onSuccess: () => void;
       console.log("Simulating payment...");
       setTimeout(() => {
         console.log("Payment successful!");
-        addNotification("Payment successful!", "success" ); // Show success notification
+        addNotification("Payment successful!", "success"); // Show success notification
         onSuccess(); // Move to the next step
       }, 2000); // Simulate a 2-second delay
     } catch (err) {
       console.error("Payment processing error:", err);
       setError("An error occurred during payment. Please try again.");
-      addNotification("Payment failed. Please try again.", "error" ); // Show error notification
+      addNotification("Payment failed. Please try again.", "error"); // Show error notification
     }
   };
 
@@ -39,4 +39,4 @@ const StripePaymentForm = ({ onSuccess, isProcessing }: { onSuccess: () => void;
   );
 };
 
-export default StripePaymentForm;
+export default PaymentForm;

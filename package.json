@@ -15,8 +15,6 @@
     "@radix-ui/react-dialog": "^1.1.2",
     "@sanity/image-url": "^1.1.0",
     "@sanity/vision": "^3.68.3",
-    "@stripe/react-stripe-js": "^3.1.1",
-    "@stripe/stripe-js": "^5.5.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dotenv": "^16.4.7",
