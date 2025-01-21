@@ -10,7 +10,7 @@ const Hero = () => {
       <div className="flex bg-secondary p-4 lg:p-14 py-28 justify-center md:flex-row flex-col items-center lg:rounded-bl-[50px]">
         <div className="lg:flex-grow md:w-3/4 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
           <h1 className="text-sm text-center lg:text-left mb-4 uppercase text-gray-900">
-            Welcome to chairy
+            Welcome to Furniture Mart
           </h1>
           <p className="mb-8 text-4xl xl:text-6xl font-bold">
             Best <span className="text-primary">Furniture Collection</span> for
