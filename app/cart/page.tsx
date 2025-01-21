@@ -47,13 +47,20 @@ const Cart = () => {
                     className="flex gap-5 border-b w-full py-5"
                     key={item._id}
                   >
-                    <Image
-                      className="mt-2 sm:mt-0 w-28 h-28 object-cover rounded-lg"
-                      src={urlFor(item.image).url()}
-                      alt={item.title}
-                      width={100}
-                      height={100}
-                    />
+                    {item.image ? (
+                                  <Image
+                                  className="mt-2 sm:mt-0 w-28 h-28 object-cover rounded-lg"
+                                  src={urlFor(item.image).url()}
+                                  alt={item.title}
+                                  width={100}
+                                  height={100}
+                                />
+                                ) : (
+                                  <div className="w-full h-64 bg-gray-200 flex items-center justify-center">
+                                    <p className="text-gray-500 text-center">No Image Available</p>
+                                  </div>
+                                )}
+                    
                     <div className="gap-1 sm:gap-3 w-full flex flex-col">
                       <div className="flex flex-col sm:flex-row justify-between gap-1">
                         <h2 className="text-accent">{item.title}</h2>

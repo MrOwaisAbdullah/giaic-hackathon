@@ -35,7 +35,7 @@ const SingleProduct = ({ product }: { product: Products }) => {
           _id: product._id,
           title: product.title,
           price: product.price,
-          image: urlFor(product.image).url(),
+          image: product.image ? urlFor(product.image).url() : null,
           quantity: quantity,
         },
       });
@@ -56,14 +56,20 @@ const SingleProduct = ({ product }: { product: Products }) => {
     <div className="flex flex-wrap xl:flex-nowrap gap-36 justify-center text-center xl:justify-start xl:text-left">
       {/* Product Image */}
       <div className="">
-        <Image
-          className="rounded-xl xl:ml-14 xl:w-[800px] xl:h-[550px] object-cover"
-          src={urlFor(product.image).url()}
-          alt={product.title}
-          priority
-          width={2000}
-          height={2000}
-        ></Image>
+      {product.image ? (
+              <Image
+              className="rounded-xl xl:ml-14 xl:w-[800px] xl:h-[550px] object-cover"
+              src={urlFor(product.image).url()}
+              alt={product.title}
+              priority
+              width={2000}
+              height={2000}
+            ></Image>
+            ) : (
+              <div className="w-full h-64 bg-gray-200 flex items-center justify-center">
+                <p className="text-gray-500 text-center">No Image Available</p>
+              </div>
+            )}
       </div>
       {/* Product Details */}
       <div className="xl:w-1/2 m-0 flex flex-col items-center xl:items-start">

@@ -9,13 +9,20 @@ const RelatedProducts = ({ product }: { product: ProductCards }) => {
     <div className="relative flex flex-col cursor-pointer group md:max-w-full md:min-w-full mt-5">
       <div className="cursor-pointer z-0 relative group md:max-w-full bg-gray-200 rounded overflow-hidden">
       <Link href={`/product/${product.slug.current}`}>
-        <Image
-          className="object-cover min-h-56 md:max-h-56 hover:scale-110 duration-200 overflow-hidden"
-          src={urlFor(product.image).url()}
-          height={300}
-          width={300}
-          alt={product.title}
-        />
+      {product.image ? (
+              <Image
+              className="object-cover min-h-56 md:max-h-56 hover:scale-110 duration-200 overflow-hidden"
+              src={urlFor(product.image).url()}
+              height={300}
+              width={300}
+              alt={product.title}
+            />
+            ) : (
+              <div className="w-full h-64 bg-gray-200 flex items-center justify-center">
+                <p className="text-gray-500 text-center">No Image Available</p>
+              </div>
+            )}
+        
         </Link>
       </div>
       <div className="flex mt-3 justify-between items-center">
